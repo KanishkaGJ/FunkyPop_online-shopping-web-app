@@ -1,0 +1,14 @@
+{
+  "name": "funkypop",
+  "version": "1.0.0",
+  "description": "This is the DS assignment project, which is a online clothing store created using MERN stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Kulanaka,Mehara,Sandali,Kanishka",
+  "license": "ISC"
+}

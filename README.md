@@ -12,3 +12,8 @@
 
 
 #### Technologies used - MERN stack
+
+##express 
+##mongoose
+##React
+##nodemon

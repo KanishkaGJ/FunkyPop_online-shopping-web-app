@@ -21,6 +21,11 @@ const expenseSchema = new Schema({
         required: true
     },
 
+    productDescription:{ // description about the expense
+        type: String,
+        required: true
+    },
+
 
 })
 

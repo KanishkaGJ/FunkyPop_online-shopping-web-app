@@ -1,8 +1,11 @@
 const express = require('express');
-const { cstsignup } = require('../controllers/customer-controller');
+const { cstsignup, verifyToken, getCustomer } = require('../controllers/customer-controller');
+const {cstlogin} = require('../controllers/customer-controller');
 
 const customerRouter = express.Router();
 
-customerRouter.post('/cstsignup', cstsignup);
+customerRouter.post('/signup', cstsignup);
+customerRouter.post('/login', cstlogin);
+customerRouter.get('/cus', verifyToken, getCustomer);
 
 module.exports = customerRouter;

@@ -27,7 +27,8 @@ const customerSchema = new Schema({
     },
     CusPassword: {
         type: String,
-        required: true
+        required: true,
+        minlength: 6
     }
 
 })

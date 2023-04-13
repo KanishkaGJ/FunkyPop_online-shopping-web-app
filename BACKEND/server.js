@@ -26,6 +26,13 @@ connection.once("open", () => {
   console.log("MongoDB connection establishment is successful!!!");
 });
 
+//import the backend routes
+const customerRouter = require('./routes/customer-route');
+app.use("/customer", customerRouter);
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);
 });

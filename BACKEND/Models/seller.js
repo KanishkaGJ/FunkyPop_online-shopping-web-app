@@ -19,7 +19,8 @@ const sellerSchema = new Schema({
     },
     SellerPassword:{
         type: String,
-        required: true
+        required: true,
+        minlength: 6
     }
 
 })

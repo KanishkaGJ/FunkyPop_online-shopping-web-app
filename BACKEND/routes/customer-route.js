@@ -7,5 +7,7 @@ const customerRouter = express.Router();
 customerRouter.post('/signup', cstsignup);
 customerRouter.post('/login', cstlogin);
 customerRouter.get('/cus', verifyToken, getCustomer);
+//verify token
+
 
 module.exports = customerRouter;

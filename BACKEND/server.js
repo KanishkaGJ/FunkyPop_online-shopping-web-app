@@ -32,6 +32,9 @@ connection.once("open", () => {
 const customerRouter = require('./routes/customer-route');
 app.use("/customer", customerRouter);
 
+const sellerRouter = require('./routes/seller-route');
+app.use("/seller", sellerRouter);
+
 
 
 

@@ -7,6 +7,13 @@ const app = express();
 require("dotenv").config();
 app.use(express.json());
 
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+//admin route
+const admin_router = require("./Routes/admin-route");
+app.use("/api", admin_router);
+
 const PORT = process.env.PORT || 8070;
 
 app.use(cors());
@@ -22,8 +29,9 @@ mongoose.connect(URL, () => {
 });
 
 const connection = mongoose.connection;
+
 connection.once("open", () => {
-  console.log("MongoDB connection establishment is successful!!!");
+    console.log("MongoDB connection establishment is successful!!!");
 });
 
 app.listen(PORT, () => {

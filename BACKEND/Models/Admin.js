@@ -1,27 +1,26 @@
-//this model is for the users to enter the expeses that are made in the business
-
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
-const expenseSchema = new Schema({
 
-   
+const AdminSchema = new Schema({
 
-    expenseName:{ // name of the expense
+    name: {
         type: String,
         required: true
     },
 
-    expenseValue:{ // the value of the expense
-        type: Number,
-        required: true
-    },
-
-    expenseDescription:{ // description about the expense
+    email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+    },
+    
+    password: {
+        type: String,
+        required: true,
+        minlength: 6,
     },
 
+});
 
-})
-
-const expenseTracker = mongoose.model("expenseTracker", expenseSchema); // changed stockVaules to expenseTracker
+module.exports = Admin = mongoose.model("admin", AdminSchema);

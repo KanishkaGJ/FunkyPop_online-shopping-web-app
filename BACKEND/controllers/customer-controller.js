@@ -2,6 +2,7 @@ const Customer = require('../models/customer');
 const bcrypt = require('bcryptjs');
 const jwt =  require('jsonwebtoken');
 
+
 //temporary secret key
 const JWT_SECRET_KEY ="CusKey";
 
@@ -78,20 +79,32 @@ const JWT_SECRET_KEY ="CusKey";
 
     //generate token
     const token = jwt.sign({id: existingCustomer._id}, JWT_SECRET_KEY, {
-        expiresIn:"1hr"
+        expiresIn:"60s"
+    });
+    console.log("Generated Token\n", token);
+
+    //after the token is created, we are sending the cookie
+    res.cookie(String(existingCustomer._id),token,{
+        path: "/",
+        expires: new Date(Date.now() + 1000*60),  //60 seconds
+        httpOnly: true,
+        sameSite: "lax",
     });
 
 
     return res.status(200).json({
         message: "Successfully logged in", customer:existingCustomer, token
-    })
- }
+    });
+ };
 
 
  //verify the customer token
  const verifyToken = (req,res,next)=>{
-    const headers = req.headers[`authorization`];
-    const token = headers.split(" ")[1];
+
+    const cookies = req.headers.cookie;
+    const token = cookies.split("=")[1];
+    console.log(token);
+
     if(!token){
         res.status(404).json({
             message:"No token found"

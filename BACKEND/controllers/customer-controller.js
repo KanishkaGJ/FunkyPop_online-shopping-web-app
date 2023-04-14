@@ -79,9 +79,14 @@ const JWT_SECRET_KEY ="CusKey";
 
     //generate token
     const token = jwt.sign({id: existingCustomer._id}, JWT_SECRET_KEY, {
-        expiresIn:"60s"
+        expiresIn:"65s"
     });
+
     console.log("Generated Token\n", token);
+
+    if(req.cookie[`${existingCustomer._id}`]){
+        req.cookies[`${existingCustomer._id}`] = ""
+    }
 
     //after the token is created, we are sending the cookie
     res.cookie(String(existingCustomer._id),token,{
@@ -138,9 +143,45 @@ const JWT_SECRET_KEY ="CusKey";
         })
     }
     return res.status(200).json({customer})
+ };
+
+ const refreshToken = (req,res,next)=>{
+    const cookies = req.headers.cookie;
+    const preToken = cookies.split("=")[1];
+    if(!preToken){
+        return res.status (400).json({
+            message: "Coudn't find token"
+        })
+    }
+    jwt.verify(String(preToken),JWT_SECRET_KEY,(err,user)=>{
+        if(err){
+            console.log(err);
+            return res.status(403).json({
+                message: "Authentication failed"
+            })
+        }
+        res.clearCookie(`${user.id}`);
+        req.cookies[`${user.id}`] = "";
+
+        const token = jwt.sign({id:user.id}, JWT_SECRET_KEY,{
+            expiresIn: "65s"
+        });
+        console.log("Regenerated token", token);
+
+        res.cookie(String(user.id),token,{
+            path: "/",
+            expires: new Date(Date.now() + 1000*60),  //60 seconds
+            httpOnly: true,
+            sameSite: "lax",
+        });
+
+        req.id = user.id;
+        next();
+    });
  }
 
  exports.cstsignup = cstsignup;
  exports.cstlogin  = cstlogin;
  exports.verifyToken = verifyToken;
  exports.getCustomer = getCustomer;
+ exports.refreshToken = refreshToken;

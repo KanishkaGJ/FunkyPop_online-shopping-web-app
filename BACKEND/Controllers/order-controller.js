@@ -1,5 +1,5 @@
 let Order = require("../Models/Order");
-const ProductRate = require("../Models/ProductRate");
+//const ProductRate = require("../Models/ProductRate");
 const { route } = require("../Routes/admin-route");
 
 exports.addOrder = (req, res) => {

@@ -1,94 +1,15 @@
 const router = require("express").Router();
-const { request, response } = require("express");
-let ProductRate = require("../Models/ProductRate");
+const productRateController = require("../Controllers/productRate-controller");
 
-//add product rate
-router.route("/addProductRate").post((req, res) => {
-    const customerName = req.body.customerName;
-    const productName = req.body.productName;
-    const rate = req.body.rate;
-    const comment = req.body.comment;
-    const date = req.body.date;
+router.post("/addProductRate", productRateController.addProductRate);
 
-    const newProductRate = new ProductRate({
-        customerName,
-        productName,
-        rate,
-        comment,
-        date,
-    });
+router.get("/productRates", productRateController.getProductRate);
 
-    newProductRate
-        .save()
-        .then(() => {
-        res.json("Product Rate Added");
-        })
-        .catch((err) => {
-        console.log(err);
-    });
-});
+router.get("/getProductRate/:id", productRateController.getProductRateById);
 
-//get all product rates
-router.route("/productRates").get((req, res) => {
-    ProductRate.find()
-        .then((productRates) => {
-        res.json(productRates);
-        })
-        .catch((err) => {
-        console.log(err);
-        });
-});
+router.put("/update/:id", productRateController.updateProductRate);
 
-//get product rate by id
-router.route("/get/:id").get(async (req, res) => {
-    
-        let productRateId = req.params.id;
-    
-        const productRate = await ProductRate.findById(productRateId).then((productRate) => {
-            res.status(200).send({status: "Product Rate Fetched", productRate});
-        }).catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with get product rate", error: err.message});
-        });
-});
-
-
-//update product rate
-router.route("/update/:id").put(async (req, res) => {
-    let productRateId = req.params.id;
-    const {customerName, productName, rate, comment, date} = req.body;
-
-    const updateProductRate = {
-        customerName,
-        productName,
-        rate,
-        comment,
-        date,
-    };
-
-    const update = await ProductRate.findByIdAndUpdate(productRateId, updateProductRate).then(() => {
-        res.status(200).send({status: "Product Rate Updated"});
-    }
-    ).catch((err) => {
-        console.log(err);
-        res.status(500).send({status: "Error with updating data", error: err.message});
-    }
-    );
-});
-
-
-//delete product rate
-router.route("/delete/:id").delete(async (req, res) => {
-    let productRateId = req.params.id;
-
-    await ProductRate.findByIdAndDelete(productRateId).then(() => {
-        res.status(200).send({status: "Product Rate Deleted"});
-    }).catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "Error with delete product rate", error: err.message});
-    });
-}
-);
+router.delete("/delete/:id", productRateController.deleteProductRate);
 
 module.exports = router;
 

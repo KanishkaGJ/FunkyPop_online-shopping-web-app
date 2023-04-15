@@ -38,13 +38,13 @@ connection.once("open", () => {
 const order_router = require("./Routes/order-route");
 app.use("/order", order_router);
 
-//seller rate route
-const sellerRate_router = require("./Routes/sellerRate-route");
-app.use("/sellerRate", sellerRate_router);
-
 //product rate route
 const productRate_router = require("./Routes/productRate-route");
 app.use("/productRate", productRate_router);
+
+//seller rate route
+const sellerRate_router = require("./Routes/sellerRate-route");
+app.use("/sellerRate", sellerRate_router);
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);

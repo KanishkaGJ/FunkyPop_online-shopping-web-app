@@ -38,6 +38,9 @@ const deleteCustomer = async(req,res,next)=>{
     })
 }
 
+//get all users
+
+
 
 exports.updateCustomer = updateCustomer;
 exports.deleteCustomer = deleteCustomer;

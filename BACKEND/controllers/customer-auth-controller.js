@@ -85,7 +85,7 @@ const JWT_SECRET_KEY ="CusKey";
     console.log("Generated Token\n", token);
 
     if(req.cookies[`${existingCustomer._id}`]){
-        req.cookies[`${existingCustomer._id}`] = ""
+        req.cookies[`${existingCustomer._id}`] = "";
     }
 
     //after the token is created, we are sending the cookie
@@ -154,29 +154,29 @@ const JWT_SECRET_KEY ="CusKey";
             message: "Coudn't find token"
         })
     }
-    jwt.verify(String(preToken),JWT_SECRET_KEY,(err,user)=>{
+    jwt.verify(String(preToken),JWT_SECRET_KEY,(err,customer)=>{
         if(err){
             console.log(err);
             return res.status(403).json({
                 message: "Authentication failed"
             })
         }
-        res.clearCookie(`${user.id}`);
-        req.cookies[`${user.id}`] = "";
+        res.clearCookie(`${customer.id}`);
+        req.cookies[`${customer.id}`] = "";
 
-        const token = jwt.sign({id:user.id}, JWT_SECRET_KEY,{
+        const token = jwt.sign({id:cus.id}, JWT_SECRET_KEY,{
             expiresIn: "65s"
         });
         console.log("Regenerated token", token);
 
-        res.cookie(String(user.id),token,{
+        res.cookie(String(customer.id),token,{
             path: "/",
             expires: new Date(Date.now() + 1000*60),  //60 seconds
             httpOnly: true,
             sameSite: "lax",
         });
 
-        req.id = user.id;
+        req.id = customer.id;
         next();
     });
  }

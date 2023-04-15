@@ -84,7 +84,7 @@ const JWT_SECRET_KEY ="CusKey";
 
     console.log("Generated Token\n", token);
 
-    if(req.cookie[`${existingCustomer._id}`]){
+    if(req.cookies[`${existingCustomer._id}`]){
         req.cookies[`${existingCustomer._id}`] = ""
     }
 

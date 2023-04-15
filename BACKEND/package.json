@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+    "bcrypt": "^5.1.0",
+=======
+>>>>>>> 5f280fa5facf3a2ef31c1c2c20afc3514aa7b5a0
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

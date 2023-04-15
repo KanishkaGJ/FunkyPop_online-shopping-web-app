@@ -1,4 +1,4 @@
-const Customer = require('../models/customer');
+const Customer = require('../Models/customer');
 
 
 //update information of customer

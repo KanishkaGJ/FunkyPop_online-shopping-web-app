@@ -9,8 +9,6 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 
-const cookieParser = require("cookie-parser");
-app.use(cookieParser());
 
 //admin route
 const admin_router = require("./Routes/admin-route");
@@ -48,10 +46,10 @@ app.use("/productRate", productRate_router);
 const sellerRate_router = require("./Routes/sellerRate-route");
 app.use("/sellerRate", sellerRate_router);
 //import the backend routes
-const customerRouter = require('./routes/customer-route');
+const customerRouter = require('./Routes/customer-route');
 app.use("/customer", customerRouter);
 
-const sellerRouter = require('./routes/seller-route');
+const sellerRouter = require('./Routes/seller-route');
 app.use("/seller", sellerRouter);
 
 

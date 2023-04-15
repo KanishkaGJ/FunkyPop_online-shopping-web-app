@@ -72,7 +72,7 @@ export default function CustomerLogin() {
 						</button>
 					</div>
 
-					<div className="flex-col-c p-t-170 p-b-40">
+					<div className="flex-col-c p-t-100 p-b-40">
 						<span className="txt1 p-b-9">
 							Don’t have an account?
 						</span>
@@ -85,17 +85,5 @@ export default function CustomerLogin() {
 			</div>
 		</div>
 	</div>
-//     <div>
-//     <form onSubmit={sendData}>
-//         Username : <input type="text" onChange={(e)=>{
-//             setCusUsername(e.target.value);
-//         }}/><br/>
-//         Password : <input type="password" onChange={(e)=>{
-//             setCusPassword(e.target.value);
-//         }}/><br/>
-        
-//         <button type="submit">Login</button>
-//     </form>
-// </div>
   )
 }

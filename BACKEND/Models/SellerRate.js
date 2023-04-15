@@ -25,7 +25,7 @@ const SellerRateSchema = new Schema({
     },
 
     date : {
-        type: Date,
+        type: String,
         required: true,
     },
 

@@ -12,7 +12,7 @@ app.use(cookieParser());
 
 //admin route
 const admin_router = require("./Routes/admin-route");
-app.use("/api", admin_router);
+app.use("/admin", admin_router);
 
 const PORT = process.env.PORT || 8070;
 
@@ -33,6 +33,18 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connection establishment is successful!!!");
 });
+
+//order route
+const order_router = require("./Routes/order-route");
+app.use("/order", order_router);
+
+//seller rate route
+const sellerRate_router = require("./Routes/sellerRate-route");
+app.use("/sellerRate", sellerRate_router);
+
+//product rate route
+const productRate_router = require("./Routes/productRate-route");
+app.use("/productRate", productRate_router);
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);

@@ -1,6 +1,6 @@
 const express = require('express');
-const { slrsignup, verifyToken, getSeller } = require('../controllers/seller-controller');
-const {slrlogin} = require('../controllers/seller-controller');
+const { slrsignup, verifyToken, getSeller } = require('../controllers/seller-auth-controller');
+const {slrlogin} = require('../controllers/seller-auth-controller');
 
 const sellerRouter = express.Router();
 

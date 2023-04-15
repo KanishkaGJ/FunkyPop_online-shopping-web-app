@@ -145,6 +145,7 @@ const JWT_SECRET_KEY ="CusKey";
     return res.status(200).json({customer})
  };
 
+ //refresh the token
  const refreshToken = (req,res,next)=>{
     const cookies = req.headers.cookie;
     const preToken = cookies.split("=")[1];

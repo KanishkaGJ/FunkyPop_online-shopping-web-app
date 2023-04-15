@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import axios from "axios";
 
 export default function SellerSignup() {
@@ -33,23 +33,64 @@ export default function SellerSignup() {
   }
   
   return (
-    <div>
-        <form onSubmit={sendData}>
-            Name: <input type="text" onChange={(e)=>{
-                setSellerName(e.target.value);
-            }}/><br/>
-            Email : <input type="email" onChange={(e)=>{
-                setSellerEmail(e.target.value);
-            }}/><br/>
-            Username : <input type="text" onChange={(e)=>{
-                setSellerUsername(e.target.value);
-            }}/><br/>
-            Password : <input type="password" onChange={(e)=>{
-                setSellerPassword(e.target.value);
-            }}/><br/>
-            
-            <button type="submit">Signup</button>
-        </form>
+    <div className="limiter">
+    <div className="container-login100">
+        <div className="wrap-login100">
+            <form onSubmit={sendData} className="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                <span className="login100-form-title">
+                    Register your shop
+                </span>
+
+                <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    <input className="input100" type="text" name="username" placeholder="Shop name" 
+        onChange={(e)=>{
+            setSellerName(e.target.value);
+        }}/>
+                    <span className="focus-input100"></span>
+                </div>
+
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
+                    <input className="input100" type="password" name="pass" placeholder="Email"
+        onChange={(e)=>{
+            setSellerEmail(e.target.value);
+        }}/>
+                    <span className="focus-input100"></span>
+                </div>
+
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
+                    <input className="input100" type="password" name="pass" placeholder="Username"
+        onChange={(e)=>{
+            setSellerUsername(e.target.value);
+        }}/>
+                    <span className="focus-input100"></span>
+                </div>
+
+                <div className="wrap-input100 validate-input m-b-35" data-validate = "Please enter password">
+                    <input className="input100" type="password" name="pass" placeholder="Password"
+        onChange={(e)=>{
+            setSellerPassword(e.target.value);
+        }}/>
+                    <span className="focus-input100"></span>
+                </div>
+
+                
+                    <button className="login100-form-btn">
+                        Signup
+                    </button>
+              
+
+                <div className="flex-col-c p-t-35 p-b-40">
+                    <span className="txt1 p-b-9">
+                        Already have an account?
+                    </span>
+
+                    <Link to="#" className="txt3">
+                        Login now
+                    </Link>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
   )
 }

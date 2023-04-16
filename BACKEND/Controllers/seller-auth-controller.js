@@ -1,76 +1,74 @@
-const Customer = require('../models/customer');
+const Seller = require('../Models/seller');
 const bcrypt = require('bcryptjs');
 const jwt =  require('jsonwebtoken');
 
 
 //temporary secret key
-const JWT_SECRET_KEY ="CusKey";
+const JWT_SECRET_KEY ="SellKey";
 
 //function to sign up
- const cstsignup = async(req, res, next)=>{
+ const slrsignup = async(req, res, next)=>{
 
-    const{CustomerName, CustomerEmail, ContactNum,Address,CusUsername, CusPassword} = req.body;
-    let existingCustomer;
+    const{SellerName, SellerEmail, SellerUsername, SellerPassword} = req.body;
+    let existingSeller;
 
     try{
-        existingCustomer = await Customer.findOne({
-            CustomerEmail: CustomerEmail
+        existingSeller = await Seller.findOne({
+            SellerEmail: SellerEmail
         });
 
     }catch(err){
         console.log(err);   
     }
 
-    if(existingCustomer){
+    if(existingSeller){
         return res.status(400).json({
             message: "User already exists, Login instead"
         })
     }
 
     //encrypt the password 
-    const hashPassword = bcrypt.hashSync(CusPassword);
+    const hashPassword = bcrypt.hashSync(SellerPassword);
 
-    const customer = new Customer({
-        CustomerName,
-        CustomerEmail,
-        ContactNum,
-        Address,
-        CusUsername,
-        CusPassword: hashPassword
+    const seller = new Seller({
+        SellerName,
+        SellerEmail,
+        SellerUsername,
+        SellerPassword: hashPassword
     });
 
     //save the object to db document 
     try{
-        await customer.save();
+        await seller.save();
     }catch(err){
         console.log(err)
     }
 
     return res.status(201).json({
-        message: customer
+        message: seller
     })
  }
 
 
 
  //function to login
- const cstlogin = async(req,res,next)=>{
-    const{CusUsername, CusPassword} = req.body;
+ const slrlogin = async(req,res,next)=>{
+    const{SellerUsername, SellerPassword} = req.body;
 
-    let existingCustomer;
+    let existingSeller;
     try{
-        existingCustomer = await Customer.findOne({
-            CusUsername: CusUsername
+        existingSeller = await Seller.findOne({
+            SellerUsername: SellerUsername
         });
     }catch(err){
         return new Error(err);
     }
-    if(!existingCustomer){
+    if(!existingSeller){
         return res.status(400).json({
             message:"User not found. SignUp please"
         })
     }
-    const isPasswordCorrect = bcrypt.compareSync(CusPassword, existingCustomer.CusPassword);
+    const isPasswordCorrect = bcrypt.compareSync(SellerPassword, existingSeller.SellerPassword);
     if(!isPasswordCorrect){
         return res.status(400).json({
             message: "Invalid Username Password"
@@ -78,13 +76,13 @@ const JWT_SECRET_KEY ="CusKey";
     }
 
     //generate token
-    const token = jwt.sign({id: existingCustomer._id}, JWT_SECRET_KEY, {
+    const token = jwt.sign({id: existingSeller._id}, JWT_SECRET_KEY, {
         expiresIn:"60s"
     });
     console.log("Generated Token\n", token);
 
     //after the token is created, we are sending the cookie
-    res.cookie(String(existingCustomer._id),token,{
+    res.cookie(String(existingSeller._id),token,{
         path: "/",
         expires: new Date(Date.now() + 1000*60),  //60 seconds
         httpOnly: true,
@@ -93,12 +91,12 @@ const JWT_SECRET_KEY ="CusKey";
 
 
     return res.status(200).json({
-        message: "Successfully logged in", customer:existingCustomer, token
+        message: "Successfully logged in", Seller:existingSeller, token
     });
  };
 
 
- //verify the customer token
+ //verify the Seller token
  const verifyToken = (req,res,next)=>{
 
     const cookies = req.headers.cookie;
@@ -110,37 +108,37 @@ const JWT_SECRET_KEY ="CusKey";
             message:"No token found"
         })
     }
-    jwt.verify(String(token), JWT_SECRET_KEY, (err, customer)=>{
+    jwt.verify(String(token), JWT_SECRET_KEY, (err, seller)=>{
         if(err){
             res.status(400).json({
                 message: "Invalid token"
             })
         }
-        console.log(customer.id);
-        req.id = customer.id;
+        console.log(seller.id);
+        req.id = seller.id;
     });
     next();
  };
 
  
-//get information of customer
- const getCustomer = async(req,res,next)=>{
-    const cusId = req.id;
-    let customer;
+//get information of Seller
+ const getSeller = async(req,res,next)=>{
+    const selId = req.id;
+    let seller;
     try{
-        customer = await Customer.findById(cusId,"-CusPassword");
+        seller = await Seller.findById(selId,"-SellerPassword");
     }catch(err){
         return new Error(err)
     }
-    if(!customer){
+    if(!seller){
         return res.status(404).json({
-            message:"Customer not found"
+            message:"Seller not found"
         })
     }
-    return res.status(200).json({customer})
+    return res.status(200).json({seller})
  }
 
- exports.cstsignup = cstsignup;
- exports.cstlogin  = cstlogin;
+ exports.slrsignup = slrsignup;
+ exports.slrlogin  = slrlogin;
  exports.verifyToken = verifyToken;
- exports.getCustomer = getCustomer;
+ exports.getSeller = getSeller;

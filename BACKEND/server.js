@@ -9,9 +9,14 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 
+
+//admin route
+const admin_router = require("./Routes/admin-route");
+app.use("/admin", admin_router);
+
 const PORT = process.env.PORT || 8070;
 
-app.use(cors());
+app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
@@ -24,18 +29,28 @@ mongoose.connect(URL, () => {
 });
 
 const connection = mongoose.connection;
+
 connection.once("open", () => {
-  console.log("MongoDB connection establishment is successful!!!");
+    console.log("MongoDB connection establishment is successful!!!");
 });
 
+//order route
+const order_router = require("./Routes/order-route");
+app.use("/order", order_router);
+
+//product rate route
+const productRate_router = require("./Routes/productRate-route");
+app.use("/productRate", productRate_router);
+
+//seller rate route
+const sellerRate_router = require("./Routes/sellerRate-route");
+app.use("/sellerRate", sellerRate_router);
 //import the backend routes
-const customerRouter = require('./routes/customer-route');
+const customerRouter = require('./Routes/customer-route');
 app.use("/customer", customerRouter);
 
-const sellerRouter = require('./routes/seller-route');
+const sellerRouter = require('./Routes/seller-route');
 app.use("/seller", sellerRouter);
-
-
 
 
 app.listen(PORT, () => {

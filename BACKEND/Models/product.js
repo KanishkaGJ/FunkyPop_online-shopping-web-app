@@ -8,7 +8,8 @@ const productSchema = new Schema({
 
     productID:{ // ID of the product
         type: String,
-        required: true
+        required: true,
+        minlength: 5
     },
 
     productName:{ // name of the product

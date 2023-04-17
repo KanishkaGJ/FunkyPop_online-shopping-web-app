@@ -54,7 +54,7 @@ export default function CustomerSignup() {
                 </div>
 
                 <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="password" name="pass" placeholder="Email"
+                    <input className="input100" type="email" name="pass" placeholder="Email"
         onChange={(e)=>{
             setCusEmail(e.target.value);
         }}/>
@@ -62,7 +62,7 @@ export default function CustomerSignup() {
                 </div>
 
                 <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="password" name="pass" placeholder="Contact Number"
+                    <input className="input100" type="text" name="pass" placeholder="Contact Number"
         onChange={(e)=>{
             setCusNum(e.target.value);
         }}/>
@@ -70,7 +70,7 @@ export default function CustomerSignup() {
                 </div>
 
                 <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="password" name="pass" placeholder="Address"
+                    <input className="input100" type="text" name="pass" placeholder="Address"
         onChange={(e)=>{
             setCusAddress(e.target.value);
         }}/>
@@ -78,7 +78,7 @@ export default function CustomerSignup() {
                 </div>
 
                 <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="password" name="pass" placeholder="Username"
+                    <input className="input100" type="text" name="pass" placeholder="Username"
         onChange={(e)=>{
             setCusUsername(e.target.value);
         }}/>

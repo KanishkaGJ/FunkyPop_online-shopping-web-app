@@ -17,6 +17,7 @@ app.use("/admin", admin_router);
 const PORT = process.env.PORT || 8070;
 
 app.use(cors({credentials: true, origin:"http://localhost:3000"}));
+
 app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;

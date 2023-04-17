@@ -41,7 +41,7 @@ export default function AdminSignup(){
                     </span>
 
                     <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-                        <input className="input100" type="text" name="username" placeholder="Name"
+                        <input className="input100" type="text" name="name" placeholder="Name"
             onChange={(e)=>{
                 setAdminName(e.target.value);
             }}/>
@@ -49,7 +49,7 @@ export default function AdminSignup(){
                     </div>
 
                     <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                        <input className="input100" type="password" name="pass" placeholder="Email"
+                        <input className="input100" type="text" name="email" placeholder="Email"
             onChange={(e)=>{
                 setAdminEmail(e.target.value);
             }}/>

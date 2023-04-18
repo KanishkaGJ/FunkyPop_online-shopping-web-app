@@ -9,7 +9,8 @@ import SellerSignup from "./components/SellerSignup";
 
 //admin
 import AdminSignup from "./components/AdminSignup";
-import AdminLogin from "./components/AdminLogin";
+import AdminSignin from "./components/AdminSignin";
+import AdminPage from "./components/AdminPage";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
         <Route path="/ssignup" element={<SellerSignup/>}></Route>
 
         <Route path="/adminSignup" element={<AdminSignup/>}></Route>
-        <Route path="/adminLogin" element={<AdminLogin/>}></Route>
+        <Route path="/adminLogin" element={<AdminSignin/>}></Route>
+        <Route path="/adminPage" element={<AdminPage/>}></Route>
 
       </Routes>
       </Router>

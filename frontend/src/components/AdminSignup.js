@@ -24,7 +24,7 @@ export default function AdminSignup(){
         //send http request
         axios.post("http://localhost:8070/admin/signup",newAdmin).then(()=>{
             alert("Admin added");
-            history("/adminLogin");
+            history("/AdminSignin");
         }).catch((err)=>{
             alert(err)
         })
@@ -74,7 +74,7 @@ export default function AdminSignup(){
                             Already have an account?
                         </span>
 
-                        <Link to="/adminLogin" className="txt3">
+                        <Link to="/AdminSignin" className="txt3">
                             Sign in now
                         </Link>
 

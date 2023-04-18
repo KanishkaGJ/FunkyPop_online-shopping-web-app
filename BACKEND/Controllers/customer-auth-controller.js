@@ -84,14 +84,10 @@ const cstlogin = async (req, res, next) => {
 
   //generate token
   const token = jwt.sign({ id: existingCustomer._id }, JWT_SECRET_KEY, {
-    expiresIn: "35s", //65
+    expiresIn: "2h", //65
   });
 
   console.log("Generated Token\n", token);
-
-  if (req.cookies[`${existingCustomer._id}`]) {
-    req.cookies[`${existingCustomer._id}`] = "";
-  }
 
   //after the token is created, we are sending the cookie
   res.cookie(String(existingCustomer._id), token, {
@@ -108,7 +104,7 @@ const cstlogin = async (req, res, next) => {
   });
 };
 
-//verify the customer token
+//verify the token
 const verifyToken = (req, res, next) => {
   const cookies = req.headers.cookie;
   const token = cookies.split("=")[1];
@@ -148,44 +144,24 @@ const getCustomer = async (req, res, next) => {
   return res.status(200).json({ customer });
 };
 
-//refresh the token
-const refreshToken = (req, res, next) => {
+//logout
+const logout = (req, res, next) => {
   const cookies = req.headers.cookie;
-  if (!cookies) {
-    return res.status(400).json({
-      message: "No cookie found in request headers",
-    });
+  const token = cookies.split("=")[1].split(";")[0];
+  console.log(cookies);
+
+  if (!token) {
+    res.status(404).json({ message: "No token found" });
   }
-  const preToken = cookies.split("=")[1];
-  if (!preToken) {
-    return res.status(400).json({
-      message: "Coudn't find token",
-    });
-  }
-  jwt.verify(String(preToken), JWT_SECRET_KEY, (err, customer) => {
+  jwt.verify(String(token), JWT_SECRET_KEY, (err, customer) => {
     if (err) {
-      console.log(err);
-      return res.status(403).json({
-        message: "Authentication failed",
-      });
+      return res.status(400).json({ message: "Invalid Token" });
     }
-    res.clearCookie(`${customer.id}`);
-    req.cookies[`${customer.id}`] = "";
-
-    const token = jwt.sign({ id: customer.id }, JWT_SECRET_KEY, {
-      expiresIn: "35s", //65
-    });
-    console.log("Regenerated token", token);
-
-    res.cookie(String(customer.id), token, {
-      path: "/",
-      expires: new Date(Date.now() + 1000 * 60), //60 seconds
-      httpOnly: true,
-      sameSite: "lax",
-    });
-
+    res.clearCookie(customer.id);
+    //req.cookies[user.id]=" "
+    console.log(customer.id);
     req.id = customer.id;
-    next();
+    return res.status(200).json({ message: "successfully logout" });
   });
 };
 
@@ -193,4 +169,4 @@ exports.cstsignup = cstsignup;
 exports.cstlogin = cstlogin;
 exports.verifyToken = verifyToken;
 exports.getCustomer = getCustomer;
-exports.refreshToken = refreshToken;
+exports.logout = logout;

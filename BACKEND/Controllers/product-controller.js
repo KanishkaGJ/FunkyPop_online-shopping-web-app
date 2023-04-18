@@ -19,7 +19,7 @@ exports.addProduct = (req, res) => {
 };
 
 
-//all orders
+//all products
 exports.getAllProducts = (req, res) => {
 
     product.find()
@@ -32,7 +32,7 @@ exports.getAllProducts = (req, res) => {
 };
 
 
-//get order by id
+//get product by id
 exports.getProductById = async (req, res) => {
 
     let productId = req.params.id;
@@ -47,7 +47,7 @@ exports.getProductById = async (req, res) => {
 };
 
 
-//update order
+//update products
 exports.updateOrder = async (req, res) => {
 
     let productId = req.params.id;
@@ -74,7 +74,7 @@ exports.updateOrder = async (req, res) => {
 };
 
 
-//delete order
+//delete products
 exports.deleteProduct = async (req, res) => {
 
     let productId = req.params.id;

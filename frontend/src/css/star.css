@@ -1,0 +1,18 @@
+.stars {
+  display: inline-block;
+  font-size: 24px;
+}
+
+.stars span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.stars span.filled {
+  background-color: #ffc107;
+}
+

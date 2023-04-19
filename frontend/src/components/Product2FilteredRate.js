@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Axios from "axios";
+import "../css/form.css";
+import "../css/star.css";
 
 export default function ProductRate() {
   const navigate = useNavigate();
@@ -54,25 +56,58 @@ export default function ProductRate() {
                 </div>
               )}
               <br></br>
-              <table
-                className="table"
-                style={{ width: "100%", margin: "0 auto" }}
-              >
-                <thead>
-                  <th>Customer Name</th>
-                  <th>Rate (out of 5) </th>
-                  <th>Comment</th>
-                </thead>
-                <tbody>
-                  {rt.map((data) => (
-                    <tr key={data.id}>
-                      <td>{data.customerName}</td>
-                      <td> {data.rate}</td>
-                      <td>{data.comment}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+
+              {rt.map((data) => (
+                <form>
+                  <div className="row">
+                    <div className="col">
+                      <div className="form-group form-inline">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="nameInput"
+                          value={data.customerName}
+                        ></input>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="col">
+                        <div className="form-group form-inline">
+                          <div className="stars">
+                            <span
+                              className={data.rate >= 1 ? "filled" : ""}
+                            ></span>
+                            <span
+                              className={data.rate >= 2 ? "filled" : ""}
+                            ></span>
+                            <span
+                              className={data.rate >= 3 ? "filled" : ""}
+                            ></span>
+                            <span
+                              className={data.rate >= 4 ? "filled" : ""}
+                            ></span>
+                            <span
+                              className={data.rate >= 5 ? "filled" : ""}
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <textarea
+                      className="form-control"
+                      placeholder="Add your comment here.."
+                      id="exampleFormControlTextarea1"
+                      value={data.comment}
+                    ></textarea>
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    ></div>
+                  </div>{" "}
+                  <br />
+                </form>
+              ))}
             </div>
           </center>
         </div>

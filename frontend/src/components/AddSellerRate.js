@@ -4,26 +4,26 @@ import axios from "axios";
 import "../css/AddProductRate.css";
 import Product2FilteredRateProduct2FilteredRate from "../components/Product2FilteredRate";
 
-export default function AddProductRate() {
+export default function AddSellerRate() {
   const navigate = useNavigate();
   const [customerName, setCustomerName] = useState("");
-  const [productName, setProductName] = useState("");
+  const [sellerName, setSellerName] = useState("");
   const [rate, setRate] = useState("");
   const [comment, setComment] = useState("");
   function sendData(e) {
     e.preventDefault();
-    const newProductRate = {
+    const newSellerRate = {
       customerName: customerName,
-      productName: productName,
+      sellerName: sellerName,
       rate: rate,
       comment: comment,
     };
     //send http request
     axios
-      .post("http://localhost:8070/productRate/addProductRate", newProductRate)
+      .post("http://localhost:8070/sellerRate/addSellerRate", newSellerRate)
       .then((resp) => {
         setCustomerName("");
-        setProductName("");
+        setSellerName("");
         setRate("");
         setComment("");
         window.location.reload(); // Refresh the page
@@ -55,7 +55,7 @@ export default function AddProductRate() {
             <div className="col">
               <div className="form-group form-inline">
                 <label htmlFor="productInput">
-                  <b>Product</b>
+                  <b>Seller</b>
                 </label>
                 <input
                   type="text"
@@ -63,7 +63,7 @@ export default function AddProductRate() {
                   id="productInput"
                   placeholder="Enter product name"
                   onChange={(e) => {
-                    setProductName(e.target.value);
+                    setSellerName(e.target.value);
                   }}
                   value="product-2"
                   disabled
@@ -107,78 +107,15 @@ export default function AddProductRate() {
               setComment(e.target.value);
             }}
           ></textarea>
-
+          <br></br>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <button type="submit" className="btn btn-dark">
               ADD
             </button>
           </div>
         </div>{" "}
-        <br></br>
       </form>
       <Product2FilteredRateProduct2FilteredRate />
     </div>
   );
 }
-
-// import React, { useState } from "react";
-// import { useNavigate, Link } from "react-router-dom";
-// import axios from "axios";
-// import { BFormRating } from 'bootstrap-vue';
-// import "../css/AddProductRate.css";
-
-// export default function AddProductRate() {
-//   const navigate = useNavigate();
-//   const [customerName, setCustomerName] = useState("");
-//   const [productName, setProductName] = useState("");
-//   const [rate, setRate] = useState("");
-//   const [comment, setComment] = useState("");
-
-//   function handleRateChange(value) {
-//     setRate(value);
-//   }
-
-//   function sendData(e) {
-//     e.preventDefault();
-//     const newProductRate = {
-//       customerName: customerName,
-//       productName: productName,
-//       rate: rate,
-//       comment: comment,
-//     };
-//     //send http request
-//     axios
-//       .post("http://localhost:8070/productRate/addProductRate", newProductRate)
-//       .then((resp) => {
-//         setCustomerName("");
-//         setProductName("");
-//         setRate("");
-//         setComment("");
-//         window.location.reload(); // Refresh the page
-//       });
-//   }
-
-//   return (
-//     <div className="form-container">
-//       <br></br>
-//       <form onSubmit={sendData}>
-//         <div className="row">
-//           <div className="col">
-//             <div className="form-group form-inline">
-//               <label htmlFor="rateInput">
-//                 <b>Rate</b>
-//               </label>
-//               <BFormRating
-//                 id="rateInput"
-//                 value={rate}
-//                 variant="warning"
-//                 class="mb-2"
-//                 onChange={handleRateChange}
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }

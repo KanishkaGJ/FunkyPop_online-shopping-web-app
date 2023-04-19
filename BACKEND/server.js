@@ -19,18 +19,18 @@ const PORT = process.env.PORT || 8070;
 app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 app.use(bodyParser.json());
 
-const URL = process.env.MONGODB_URL;
+// const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL, () => {
+mongoose.connect(process.env.MONGODB_URL, () => {
   useCreateIndex: true;
   useNewUrlParser: true;
   useUnifiedTopology: true;
   useFindAndModify: true;
 });
 
-const connection = mongoose.connection;
+// const connection = mongoose.connection;
 
-connection.once("open", () => {
+mongoose.connection.once("open", () => {
     console.log("MongoDB connection establishment is successful!!!");
 });
 
@@ -48,8 +48,8 @@ app.use("/productRate", productRate_router);
 const sellerRate_router = require("./Routes/sellerRate-route");
 app.use("/sellerRate", sellerRate_router);
 //import the backend routes
-const customerRouter = require('./Routes/customer-route');
-app.use("/customer", customerRouter);
+// const customerRouter = require('./Routes/customer-route');
+// app.use("/customer", customerRouter);
 
 const sellerRouter = require('./Routes/seller-route');
 app.use("/seller", sellerRouter);
@@ -58,3 +58,13 @@ app.use("/seller", sellerRouter);
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);
 });
+
+
+// testing out image handling server.js codes
+
+app.use(cors())
+app.use(express.json());
+app.use(express.static("public"));
+
+const uploadRoute = require("./Routes/upload-route");
+app.use(uploadRoute);

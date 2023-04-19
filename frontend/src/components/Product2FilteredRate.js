@@ -4,9 +4,11 @@ import Axios from "axios";
 import "../css/form.css";
 import "../css/star.css";
 
+import userIcon from "../images/user.png"; // import the user icon image
+import "../css/userIcon.css";
+
 export default function ProductRate() {
   const navigate = useNavigate();
-
   const componentRef = useRef();
   const [rt, setRt] = useState([]);
   let [rate, setRate] = useState("");
@@ -31,6 +33,12 @@ export default function ProductRate() {
     }
   }, [rt]);
 
+  function getStars(rating) {
+    const filledStars = "★".repeat(rating);
+    const emptyStars = "☆".repeat(5 - rating);
+    return filledStars + emptyStars;
+  }
+
   return (
     <section className="ftco-section">
       <div className="container">
@@ -49,65 +57,69 @@ export default function ProductRate() {
                 textAlign: "center",
               }}
             >
-              {meanValue && (
+              {/* {meanValue && (
                 <div>
                   <h5>Rate for the product: {meanValue.toFixed(2)}</h5>
-                  {/* <h5>Value: {rate}</h5> */}
+                </div>
+              )} */}
+              {meanValue && (
+                <div>
+                  <h5>
+                    Rate for the product:{" "}
+                    <div>{getStars(Math.round(meanValue))}</div>
+                    <div>{meanValue.toFixed(2)}</div>
+                  </h5>
                 </div>
               )}
               <br></br>
-
               {rt.map((data) => (
-                <form>
-                  <div className="row">
-                    <div className="col">
-                      <div className="form-group form-inline">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="nameInput"
-                          value={data.customerName}
-                        ></input>
-                      </div>
-                    </div>
-                    <div className="col">
+                <div className="form-wrapper">
+                  <form className="">
+                    <div className="row">
                       <div className="col">
-                        <div className="form-group form-inline">
-                          <div className="stars">
-                            <span
-                              className={data.rate >= 1 ? "filled" : ""}
-                            ></span>
-                            <span
-                              className={data.rate >= 2 ? "filled" : ""}
-                            ></span>
-                            <span
-                              className={data.rate >= 3 ? "filled" : ""}
-                            ></span>
-                            <span
-                              className={data.rate >= 4 ? "filled" : ""}
-                            ></span>
-                            <span
-                              className={data.rate >= 5 ? "filled" : ""}
-                            ></span>
+                        <div
+                          className="form-group form-inline"
+                          style={{ display: "flex", alignItems: "center" }}
+                        >
+                          <img
+                            src={userIcon}
+                            alt="User Icon"
+                            className="user-icon"
+                            style={{ marginRight: "0.5em" }}
+                          />{" "}
+                          <strong className="name-cus">
+                            {data.customerName}
+                          </strong>
+                        </div>
+                      </div>
+                      <div className="col">
+                        <div className="col">
+                          <div className="form-group form-inline">
+                            <div className="stars filled">
+                              {getStars(data.rate)}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="form-group">
-                    <textarea
-                      className="form-control"
-                      placeholder="Add your comment here.."
-                      id="exampleFormControlTextarea1"
-                      value={data.comment}
-                    ></textarea>
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    ></div>
-                  </div>{" "}
-                  <br />
-                </form>
+                    <div className="form-group">
+                      <textarea
+                        className="form-control form-control-new backColor name-cus"
+                        placeholder="Add your comment here.."
+                        id="exampleFormControlTextarea1"
+                        value={data.comment}
+                        readOnly
+                        style={{ resize: "none" }}
+                      />
+                      <div
+                        style={{ display: "flex", justifyContent: "flex-end" }}
+                      ></div>
+                    </div>{" "}
+                    <br />
+                  </form>
+                </div>
               ))}
+              <br></br>
             </div>
           </center>
         </div>

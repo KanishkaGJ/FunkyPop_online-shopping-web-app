@@ -16,3 +16,15 @@
   background-color: #ffc107;
 }
 
+.form-control-new:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.filled {
+  color: rgb(236, 236, 129);
+}
+
+.filled-mean{
+  color: rgb(231, 231, 53);
+}

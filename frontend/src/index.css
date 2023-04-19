@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.button {   /* this is the syling for the button icon in the button component*/
+  color: rgb(67, 1, 128);
+  font-size: 60px;
+  height: 65px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 2rem;
+}

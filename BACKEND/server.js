@@ -14,7 +14,7 @@ app.use(cookieParser());
 const admin_router = require("./Routes/admin-route");
 app.use("/admin", admin_router);
 
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 app.use(bodyParser.json());

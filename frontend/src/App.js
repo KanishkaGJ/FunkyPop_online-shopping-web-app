@@ -17,6 +17,7 @@ import ProductRate from "./components/ProductRates";
 
 //filtered rates
 import Product2FilteredRateProduct2FilteredRate from "./components/Product2FilteredRate";
+import SellerFilteredRate from "./components/SellerFilteredRate";
 
 //seller rate
 import AddSellerRate from "./components/AddSellerRate";
@@ -45,7 +46,7 @@ function App() {
           path="/product2rates"
           element={<Product2FilteredRateProduct2FilteredRate />}
         ></Route>
-        
+        <Route path="/sellerRate" element={<SellerFilteredRate />}></Route>
       </Routes>
     </Router>
   );

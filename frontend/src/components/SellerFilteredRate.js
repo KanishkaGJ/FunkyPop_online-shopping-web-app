@@ -7,7 +7,7 @@ import "../css/star.css";
 import userIcon from "../images/user.png"; // import the user icon image
 import "../css/userIcon.css";
 
-export default function ProductRate() {
+export default function SellerFilteredRate() {
   const navigate = useNavigate();
   const componentRef = useRef();
   const [rt, setRt] = useState([]);
@@ -65,7 +65,7 @@ export default function ProductRate() {
               {meanValue && (
                 <div>
                   <h5>
-                    Rate for the product :{" "}
+                    Rate for the seller :{" "}
                     <div>{getStars(Math.round(meanValue))}</div>
                     <div>{meanValue.toFixed(2)}</div>
                   </h5>

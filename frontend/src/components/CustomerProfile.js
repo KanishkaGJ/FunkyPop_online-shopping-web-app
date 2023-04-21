@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
 import "../css/cusProfile.css";
 axios.defaults.withCredentials = true;
@@ -12,16 +13,6 @@ export default function CustomerProfile() {
   const [ContactNum, setContactNum] = useState("");
   const [Address, setAddress] = useState("");
   const [CusUsername, setCusUsername] = useState("");
-
-  // const sendRequest = async () => {
-  //   const res = await axios
-  //     .get("http://localhost:8070/customer/cus", {
-  //       withCredentials: true,
-  //     })
-  //     .catch((err) => console.log(err));
-  //   const data = await res.data;
-  //   return data;
-  // };
 
   useEffect(() => {
     const sendRequest = async () => {
@@ -49,15 +40,41 @@ export default function CustomerProfile() {
       CusUsername: CusUsername,
     };
 
-    await axios.put(
-      `http://localhost:8070/customer/update/${customer._id}`,
-      data,
-      {
+    await axios
+      .put(`http://localhost:8070/customer/update/${customer._id}`, data, {
         withCredentials: true,
-      }
-    );
+      })
+      .then(() => {
+        alert("Profile Updated");
+      })
+      .catch((err) => {
+        alert(err);
+      });
 
     setCustomer({ ...customer, ...data });
+  };
+
+  const onDelete = (_id) => {
+    axios
+      .delete("http://localhost:8070/material/delete/" + customer._id)
+      .then(() => {});
+  };
+
+  const submit = (_id) => {
+    confirmAlert({
+      title: "Confirm to Delete",
+      message: "Are you sure to do this?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => onDelete(_id),
+        },
+        {
+          label: "No",
+          //onClick: () => alert('Click No')
+        },
+      ],
+    });
   };
 
   if (!customer) {
@@ -142,6 +159,10 @@ export default function CustomerProfile() {
               onClick={sendDataToUpdate}
             >
               Save and Update
+            </button>
+
+            <button className="login100-form-btn m-b-16 m-t-16">
+              Delete Account
             </button>
           </form>
         </div>

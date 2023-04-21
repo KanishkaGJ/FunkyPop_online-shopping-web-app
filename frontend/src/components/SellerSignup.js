@@ -23,7 +23,7 @@ export default function SellerSignup() {
     }
 
     //send http request
-    axios.post("http://localhost:8070/seller/signup",newSeller).then(()=>{
+    axios.post("http://localhost:8080/seller/signup",newSeller).then(()=>{
         alert("Customer added");
         history("/login");
     }).catch((err)=>{

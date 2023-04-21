@@ -20,7 +20,7 @@ export default function CustomerLogin() {
     }
 
     //send http request
-    axios.post("http://localhost:8070/customer/login",newLogin).then(()=>{
+    axios.post("http://localhost:8080/customer/login",newLogin).then(()=>{
         alert("Login Successful");
         history("/users");
     }).catch((err)=>{

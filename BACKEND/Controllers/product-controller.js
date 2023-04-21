@@ -1,12 +1,12 @@
 let product = require("../Models/product");
 //const ProductRate = require("../Models/ProductRate");
-const { route } = require("./Routes/product-route");
+// const { route } = require("../Routes/product-route");
 
 //add products
 exports.addProduct = (req, res) => {
 
-    const { productID, productName, quantity, type, color, size, productDescription, overallRating } = req.body;
-    const newProduct = new product({ productID, productName, quantity, type, color, size, productDescription, overallRating });
+    const { productID, productName, quantity, type, color, size, productDescription } = req.body;
+    const newProduct = new product({ productID, productName, quantity, type, color, size, productDescription });
 
     newProduct
         .save()
@@ -48,11 +48,11 @@ exports.getProductById = async (req, res) => {
 
 
 //update products
-exports.updateOrder = async (req, res) => {
+exports.updateProduct = async (req, res) => {
 
     let productId = req.params.id;
 
-    const {productID, productName, quantity, type, color, size, productDescription, overallRating} = req.body;
+    const {productID, productName, quantity, type, color, size, productDescription } = req.body;
 
     const updateProduct = {
         productID, 
@@ -62,7 +62,7 @@ exports.updateOrder = async (req, res) => {
         color, 
         size, 
         productDescription, 
-        overallRating
+       
     };
 
     const update = await product.findByIdAndUpdate(productId, updateProduct).then(() => {

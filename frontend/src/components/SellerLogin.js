@@ -18,7 +18,7 @@ export default function SellerLogin() {
     }
 
     //send http request
-    axios.post("http://localhost:8070/seller/login",newLogin).then(()=>{
+    axios.post("http://localhost:8080/seller/login",newLogin).then(()=>{
         alert("Login Successful");
         history("/users");
     }).catch((err)=>{

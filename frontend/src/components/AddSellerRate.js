@@ -5,11 +5,11 @@ import "../css/AddProductRate.css";
 import SellerFilteredRate from "./SellerFilteredRate";
 import { FaStar } from "react-icons/fa";
 
-export default function AddProductRate() {
+export default function AddSellerRate() {
   const navigate = useNavigate();
   const [customerName, setCustomerName] = useState("");
-  const [productName, setProductName] = useState("");
-  const [rate, setRate] = useState("");
+  const [productName, setSellerName] = useState("");
+  // const [rate, setRate] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(null);
 
@@ -17,21 +17,21 @@ export default function AddProductRate() {
     setRating(value);
   }
 
-  function sendData(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    const newProductRate = {
+    const newSellerRate = {
       customerName: customerName,
-      productName: "product-2",
-      rate: rate,
+      sellerName: "seller 3",
+      rate: rating,
       comment: comment,
     };
     //send http request
     axios
-      .post("http://localhost:8070/productRate/addProductRate", newProductRate)
+      .post("http://localhost:8070/sellerRate/addSellerRate", newSellerRate)
       .then((resp) => {
         setCustomerName("");
-        setProductName("");
-        setRate(0);
+        setSellerName("");
+        setRating(null);
         setComment("");
         window.location.reload(); // Refresh the page
       });
@@ -41,7 +41,7 @@ export default function AddProductRate() {
     <div className="form-container">
       <br></br>
       <div className="form-box">
-        <form class="form-review" onSubmit={sendData}>
+        <form class="form-review" onSubmit={handleSubmit}>
           <div class="row">
             <div class="col">
               <div class="form-group form-inline">

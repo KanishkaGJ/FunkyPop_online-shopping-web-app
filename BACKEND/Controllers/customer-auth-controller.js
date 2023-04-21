@@ -127,23 +127,6 @@ const verifyToken = (req, res, next) => {
   next();
 };
 
-//get information of customer
-const getCustomer = async (req, res, next) => {
-  const cusId = req.id;
-  let customer;
-  try {
-    customer = await Customer.findById(cusId, "-CusPassword");
-  } catch (err) {
-    return new Error(err);
-  }
-  if (!customer) {
-    return res.status(404).json({
-      message: "Customer not found",
-    });
-  }
-  return res.status(200).json({ customer });
-};
-
 //logout
 const logout = (req, res, next) => {
   const cookies = req.headers.cookie;
@@ -163,6 +146,23 @@ const logout = (req, res, next) => {
     req.id = customer.id;
     return res.status(200).json({ message: "successfully logout" });
   });
+};
+
+//get information of customer
+const getCustomer = async (req, res, next) => {
+  const cusId = req.id;
+  let customer;
+  try {
+    customer = await Customer.findById(cusId, "-CusPassword");
+  } catch (err) {
+    return new Error(err);
+  }
+  if (!customer) {
+    return res.status(404).json({
+      message: "Customer not found",
+    });
+  }
+  return res.status(200).json({ customer });
 };
 
 exports.cstsignup = cstsignup;

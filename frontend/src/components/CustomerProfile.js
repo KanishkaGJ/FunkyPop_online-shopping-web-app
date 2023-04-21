@@ -1,87 +1,146 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../css/cusProfile.css";
 axios.defaults.withCredentials = true;
-let firstRender = true;
+// let firstRender = true;
+
 export default function CustomerProfile() {
+  const [customer, setCustomer] = useState();
+
+  const [CustomerName, setCustomerName] = useState("");
+  const [CustomerEmail, setCustomerEmail] = useState("");
+  const [ContactNum, setContactNum] = useState("");
+  const [Address, setAddress] = useState("");
+  const [CusUsername, setCusUsername] = useState("");
+
+  // const sendRequest = async () => {
+  //   const res = await axios
+  //     .get("http://localhost:8070/customer/cus", {
+  //       withCredentials: true,
+  //     })
+  //     .catch((err) => console.log(err));
+  //   const data = await res.data;
+  //   return data;
+  // };
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      const res = await axios.get("http://localhost:8070/customer/cus");
+      const data = res.data.customer;
+      setCustomer(data);
+      setCustomerName(data.CustomerName);
+      setCustomerEmail(data.CustomerEmail);
+      setContactNum(data.ContactNum);
+      setAddress(data.Address);
+      setCusUsername(data.CusUsername);
+    };
+
+    sendRequest();
+  }, []);
+
+  const sendDataToUpdate = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      CustomerName: CustomerName,
+      CustomerEmail: CustomerEmail,
+      ContactNum: ContactNum,
+      Address: Address,
+      CusUsername: CusUsername,
+    };
+
+    await axios.put(
+      `http://localhost:8070/customer/update/${customer._id}`,
+      data,
+      {
+        withCredentials: true,
+      }
+    );
+
+    setCustomer({ ...customer, ...data });
+  };
+
+  if (!customer) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="limiter">
       <div className="container-login100">
         <div className="wrap-login100">
           <form className="login100-form validate-form p-l-55 p-r-55 p-t-178">
             <span className="login100-form-title">Profile</span>
-            <span className="txt2 m-l-16">Name:</span>
-            <div
-              className="wrap-input100 validate-input m-t-10 m-b-16"
-              data-validate="Please enter username"
-            >
-              <input
-                className="input100"
-                type="text"
-                name="cusName"
-                // value={customer.CustomerName}
-                placeholder="name"
-              />
-              <span className="focus-input100"></span>
-            </div>
-            <span className="txt2 m-l-16">Email:</span>
-            <div
-              className="wrap-input100 validate-input m-t-10 m-b-16"
-              data-validate="Please enter password"
-            >
-              <input
-                className="input100"
-                type="password"
-                name="cusEmail"
-                // value={customer.CustomerEmail}
-                placeholder="name"
-              />
-              <span className="focus-input100"></span>
-            </div>
-            <span className="txt2 m-l-16">Contact Number:</span>
-            <div
-              className="wrap-input100 validate-input m-t-10 m-b-16"
-              data-validate="Please enter password"
-            >
-              <input
-                className="input100"
-                type="text"
-                name="cusTelNum"
-                // value={customer.ContactNum}
-                placeholder="name"
-              />
-              <span className="focus-input100"></span>
-            </div>
-            <span className="txt2 m-l-16">Address:</span>
-            <div
-              className="wrap-input100 validate-input m-t-10 m-b-16"
-              data-validate="Please enter password"
-            >
-              <input
-                className="input100"
-                type="password"
-                name="cusAddress"
-                // value={customer.Address}
-                placeholder="name"
-              />
-              <span className="focus-input100"></span>
-            </div>
-            <span className="txt2 m-l-16">Username:</span>
-            <div
-              className="wrap-input100 validate-input m-t-10 m-b-16"
-              data-validate="Please enter password"
-            >
-              <input
-                className="input100"
-                type="password"
-                name="cusUsername"
-                // value={customer.CusUsername}
-                placeholder="name"
-              />
 
-              <span className="focus-input100"></span>
+            <div className="alignLine m-b-20">
+              <span stlle="margin-right:10px;">Name:</span>
+              <input
+                className="input200 m-l-16"
+                type="text"
+                value={CustomerName}
+                name="CustomerName"
+                onChange={(e) => {
+                  setCustomerName(e.target.value);
+                }}
+              />
             </div>
-            <span className="txt2 m-l-16">Change Password</span>
-            <button className="login100-form-btn m-b-16 m-t-16">
+
+            <div className="alignLine m-b-20">
+              <span stlle="margin-right:10px;">Email:</span>
+              <input
+                className="input200 m-l-16"
+                type="text"
+                value={CustomerEmail}
+                name="CustomerEmail"
+                onChange={(e) => {
+                  setCustomerEmail(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="alignLine m-b-20">
+              <span stlle="margin-right:10px;">Tel.No:</span>
+              <input
+                className="input200 m-l-16"
+                type="text"
+                value={ContactNum}
+                name="ContactNum"
+                onChange={(e) => {
+                  setContactNum(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="alignLine m-b-20">
+              <span stlle="margin-right:10px;">Address:</span>
+              <input
+                className="input200 m-l-16"
+                type="text"
+                value={Address}
+                name="ContactNum"
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="alignLine m-b-16">
+              <span stlle="margin-right:10px;">Username:</span>
+              <input
+                className="input200 m-l-16"
+                type="text"
+                value={CusUsername}
+                name="CusUsername"
+                onChange={(e) => {
+                  setCusUsername(e.target.value);
+                }}
+              />
+            </div>
+
+            <button
+              className="login100-form-btn m-b-16 m-t-16"
+              type="submit"
+              onClick={sendDataToUpdate}
+            >
               Save and Update
             </button>
           </form>

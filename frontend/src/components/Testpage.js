@@ -6,17 +6,6 @@ let firstRender = true;
 const Testpage = () => {
   const [customer, setCustomer] = useState();
 
-  // const refreshToken = async () => {
-  //   const res = await axios
-  //     .get("http://localhost:8070/customer/refresh", {
-  //       withCredentials: true,
-  //     })
-  //     .catch((err) => console.log(err));
-
-  //   const data = await res.data;
-  //   return data;
-  // };
-
   const sendRequest = async () => {
     const res = await axios
       .get("http://localhost:8070/customer/cus", {

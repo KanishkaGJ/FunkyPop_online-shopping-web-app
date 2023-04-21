@@ -60,28 +60,6 @@ export default function AddProductRate() {
               </div>
             </div>
 
-            {/* <div class="col">
-              <div class="form-group form-inline">
-                <label for="rateInput">
-                  <b>Rate</b>
-                </label>
-                <select
-                  class="form-control input-field"
-                  id="rateInput"
-                  placeholder="Choose.."
-                  onChange={(e) => {
-                    setRate(e.target.value);
-                  }}
-                >
-                  <option value="">Choose..</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div> */}
             {/* rate by stars */}
             <div class="col">
               <div class="form-group form-inline">

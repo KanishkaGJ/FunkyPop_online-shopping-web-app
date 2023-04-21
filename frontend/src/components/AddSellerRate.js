@@ -1,9 +1,9 @@
-
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../css/AddProductRate.css";
 import SellerFilteredRate from "./SellerFilteredRate";
+import { FaStar } from "react-icons/fa";
 
 export default function AddProductRate() {
   const navigate = useNavigate();
@@ -11,6 +11,11 @@ export default function AddProductRate() {
   const [productName, setProductName] = useState("");
   const [rate, setRate] = useState("");
   const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(null);
+
+  function handleRating(value) {
+    setRating(value);
+  }
 
   function sendData(e) {
     e.preventDefault();
@@ -55,8 +60,7 @@ export default function AddProductRate() {
               </div>
             </div>
 
-           
-            <div class="col">
+            {/* <div class="col">
               <div class="form-group form-inline">
                 <label for="rateInput">
                   <b>Rate</b>
@@ -76,6 +80,34 @@ export default function AddProductRate() {
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
+              </div>
+            </div> */}
+            {/* rate by stars */}
+            <div class="col">
+              <div class="form-group form-inline">
+                <label for="rateInput">
+                  <b>Rate</b>
+                </label>
+                <div className="stars-container">
+                  {[...Array(5)].map((star, i) => {
+                    const ratingValue = i + 1;
+                    return (
+                      <label key={i}>
+                        <input
+                          type="radio"
+                          name="rating"
+                          value={ratingValue}
+                          onClick={() => handleRating(ratingValue)}
+                        />
+                        <FaStar
+                          className="star"
+                          color={ratingValue <= rating ? "#ffc107" : "#e4e5e9"}
+                          size={25}
+                        />
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

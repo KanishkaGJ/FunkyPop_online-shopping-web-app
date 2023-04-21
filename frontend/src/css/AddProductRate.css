@@ -9,3 +9,9 @@
   margin: 10px;
   border-radius: 10px;
 }
+
+input[type="radio"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}

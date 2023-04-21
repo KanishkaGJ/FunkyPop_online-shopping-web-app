@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { FaStar } from "react-icons/fa";
 import "../css/AddProductRate.css";
 import Product2FilteredRateProduct2FilteredRate from "../components/Product2FilteredRate";
 
@@ -8,14 +9,19 @@ export default function AddProductRate() {
   const navigate = useNavigate();
   const [customerName, setCustomerName] = useState("");
   const [productName, setProductName] = useState("");
-  const [rate, setRate] = useState("");
+  const [rating, setRating] = useState(null);
   const [comment, setComment] = useState("");
-  function sendData(e) {
+
+  function handleRating(value) {
+    setRating(value);
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
     const newProductRate = {
       customerName: customerName,
       productName: "product-2",
-      rate: rate,
+      rate: rating,
       comment: comment,
     };
     //send http request
@@ -24,7 +30,7 @@ export default function AddProductRate() {
       .then((resp) => {
         setCustomerName("");
         setProductName("");
-        setRate(0);
+        setRating(null);
         setComment("");
         window.location.reload(); // Refresh the page
       });
@@ -34,7 +40,7 @@ export default function AddProductRate() {
     <div className="form-container">
       <br></br>
       <div className="form-box">
-        <form class="form-review" onSubmit={sendData}>
+        <form class="form-review" onSubmit={handleSubmit}>
           <div class="row">
             <div class="col">
               <div class="form-group form-inline">
@@ -53,31 +59,35 @@ export default function AddProductRate() {
               </div>
             </div>
 
-            {/* rate by dropdown */}
+            {/* rate by stars */}
             <div class="col">
               <div class="form-group form-inline">
                 <label for="rateInput">
                   <b>Rate</b>
                 </label>
-                <select
-                  class="form-control input-field"
-                  id="rateInput"
-                  placeholder="Choose.."
-                  onChange={(e) => {
-                    setRate(e.target.value);
-                  }}
-                >
-                  <option value="">Choose..</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+                <div className="stars-container">
+                  {[...Array(5)].map((star, i) => {
+                    const ratingValue = i + 1;
+                    return (
+                      <label key={i}>
+                        <input
+                          type="radio"
+                          name="rating"
+                          value={ratingValue}
+                          onClick={() => handleRating(ratingValue)}
+                        />
+                        <FaStar
+                          className="star"
+                          color={ratingValue <= rating ? "#ffc107" : "#e4e5e9"}
+                          size={25}
+                        />
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
-
           <br />
           <div class="form-group">
             <label for="exampleFormControlTextarea1">

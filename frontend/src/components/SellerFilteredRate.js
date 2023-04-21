@@ -4,7 +4,9 @@ import Axios from "axios";
 import "../css/form.css";
 import "../css/star.css";
 
-import userIcon from "../images/user.png"; // import the user icon image
+// import the user icon image
+import userIcon from "../images/user.png";
+
 import "../css/userIcon.css";
 
 export default function SellerFilteredRate() {
@@ -15,10 +17,10 @@ export default function SellerFilteredRate() {
   let [meanValue, setMeanValue] = useState(null);
 
   useEffect(() => {
-    Axios.get("http://localhost:8070/productRate/productRates").then(
+    Axios.get("http://localhost:8070/sellerRate/sellerRates").then(
       (getData) => {
         const filteredData = getData.data.filter(
-          (data) => data.productName === "product-2"
+          (data) => data.sellerName === "seller 3"
         );
         setRt(filteredData);
       }
@@ -57,11 +59,6 @@ export default function SellerFilteredRate() {
                 textAlign: "center",
               }}
             >
-              {/* {meanValue && (
-                <div>
-                  <h5>Rate for the product: {meanValue.toFixed(2)}</h5>
-                </div>
-              )} */}
               {meanValue && (
                 <div>
                   <h5>

@@ -16,7 +16,7 @@ app.use("/admin", admin_router);
 
 const PORT = process.env.PORT || 8080;
 
-app.use(cors({credentials: true, origin:"http://localhost:3000"}));
+app.use(cors({credentials: true, origin:"http://localhost:3001"}));
 app.use(bodyParser.json());
 
 // const URL = process.env.MONGODB_URL;
@@ -62,7 +62,7 @@ app.listen(PORT, () => {
 
 // testing out image handling server.js codes
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 

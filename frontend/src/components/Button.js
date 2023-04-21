@@ -11,7 +11,7 @@ const Button = () => {
         const formData = new FormData()
         formData.append("photo", e.target.files[0])
 
-        axios.post("http://localhost:8070/api/save", formData)
+        axios.post("http://localhost:8080/api/save", formData)
         .then((res) => {
             console.log(res.data);
         })

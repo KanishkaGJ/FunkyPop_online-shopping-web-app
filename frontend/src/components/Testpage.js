@@ -8,7 +8,7 @@ export default function Testpage() {
     const [user, setUser] =  useState();
 
     const refreshToken = async()=>{
-        const res = await axios.get("http://localhost:8070/customer/refresh",{
+        const res = await axios.get("http://localhost:8080/customer/refresh",{
             withCredentials: true,
         }).catch((err)=>console.log(err));
 
@@ -18,7 +18,7 @@ export default function Testpage() {
 
 
     const sendRequest = async ()=>{
-        const res = await axios.get("http://localhost:8070/customer/cus", {
+        const res = await axios.get("http://localhost:8080/customer/cus", {
             withCredentials: true
         }).catch((err)=>console.log(err));
         const data = await res.data;

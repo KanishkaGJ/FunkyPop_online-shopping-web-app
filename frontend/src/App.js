@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     axios
-    .get("http://localhost:8070/api/get")
+    .get("http://localhost:8080/api/get")
     .then((res) => {
       console.log(res.data);
       setPhotos(res.data);

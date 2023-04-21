@@ -30,7 +30,7 @@ const ImageGrid = ({ photos }) => {
         {photos.map(({ photo, _id }) => (
           <div key={_id} className="grid__item">
             <img
-              src={`http://localhost:8070/uploads/${photo}`}
+              src={`http://localhost:8080/uploads/${photo}`}
               alt="grid_image"
             />
           </div>

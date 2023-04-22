@@ -8,8 +8,8 @@ const productSchema = new Schema({
 
     productID:{ // ID of the product
         type: String,
-        required: true,
-        minlength: 5
+        required: true
+        
     },
 
     productName:{ // name of the product
@@ -38,11 +38,6 @@ const productSchema = new Schema({
     },
 
     productDescription:{ // description of the product
-        type: String,
-        required: true
-    },
-
-    overallRating:{ // overall rating of the product that was given to the specific type of product
         type: String,
         required: true
     }

@@ -12,15 +12,17 @@ app.use(cookieParser());
 
 //db connection
 connectDB();
+app.use(cors({credentials: true, origin:"http://localhost:3001"}));
+app.use(bodyParser.json());
+
 
 //admin route
 const admin_router = require("./Routes/admin-route");
 app.use("/admin", admin_router);
 
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8080;
 
-app.use(cors({credentials: true, origin:"http://localhost:3000"}));
-app.use(bodyParser.json());
+
 
 const URL = process.env.MONGODB_URL;
 
@@ -37,6 +39,8 @@ connection.once("open", () => {
     console.log("MongoDB connection establishment is successful!!!");
 });
 
+
+
 //order route
 const order_router = require("./Routes/order-route");
 app.use("/order", order_router);
@@ -52,9 +56,14 @@ app.use("/sellerRate", sellerRate_router);
 //const customerRouter = require('./Routes/customer-route');
 //
 //app.use("/customer", customerRouter);
+// const customerRouter = require('./Routes/customer-route');
+// app.use("/customer", customerRouter);
 
 const sellerRouter = require('./Routes/seller-route');
 app.use("/seller", sellerRouter);
+
+const productRouter = require('./Routes/product-route');
+app.use("/product", productRouter);
 
 
 app.listen(PORT, () => {

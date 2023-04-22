@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
@@ -6,6 +7,7 @@ import CustomerSignup from "./components/CustomerSignup";
 import Testpage from "./components/Testpage";
 import SellerLogin from "./components/SellerLogin";
 import SellerSignup from "./components/SellerSignup";
+import AddProduct from "./components/AddProduct";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
 
         <Route path="/slogin" element={<SellerLogin/>}></Route>
         <Route path="/ssignup" element={<SellerSignup/>}></Route>
+        <Route path="/addP" element={<AddProduct/>}></Route>
       </Routes>
       </Router>
   );

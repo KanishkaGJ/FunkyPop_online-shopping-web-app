@@ -9,14 +9,14 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ credentials: true, origin: "http://localhost:3001" }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(bodyParser.json());
 
 //admin route
 const admin_router = require("./Routes/admin-route");
 app.use("/admin", admin_router);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8070;
 
 const URL = process.env.MONGODB_URL;
 

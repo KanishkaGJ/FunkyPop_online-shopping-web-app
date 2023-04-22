@@ -28,7 +28,7 @@ export default function CustomerSignup() {
     axios
       .post("http://localhost:8070/customer/signup", newCustomer)
       .then(() => {
-        alert("Customer added");
+        alert("Seller added");
         history("/login");
       })
       .catch((err) => {

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import "../css/customerLogin.css";
+import "../css/cusLoginUtil.css";
 
-export default function SellerLogin() {
+export default function CustomerLogin() {
   const history = useNavigate();
 
   const [SellerUsername, setSellerUsername] = useState("");
@@ -20,7 +22,7 @@ export default function SellerLogin() {
       .post("http://localhost:8070/seller/login", newLogin)
       .then(() => {
         alert("Login Successful");
-        history("/users");
+        history("/selprofile");
       })
       .catch((err) => {
         alert(err);
@@ -35,7 +37,7 @@ export default function SellerLogin() {
             onSubmit={sendData}
             className="login100-form validate-form p-l-55 p-r-55 p-t-178"
           >
-            <span className="login100-form-title">Shop Sign In</span>
+            <span className="login100-form-title">Sign In</span>
 
             <div
               className="wrap-input100 validate-input m-b-16"

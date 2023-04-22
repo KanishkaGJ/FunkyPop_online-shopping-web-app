@@ -37,7 +37,9 @@ export default function AdminPage() {
         <br></br>
         <br></br>
         <center>
+          <br></br>
           <h1>All Orders</h1>
+          <br />
           <button
             type="button"
             className="btn btn-dark logout-button"
@@ -52,8 +54,8 @@ export default function AdminPage() {
           style={{ width: "100%", height: window.innerHeight }}
         >
           <center>
-            <table className="table" style={{ border: "2px solid black" , borderRadius:"10px"}}>
-              <thead style={{ backgroundColor: "black" }}>
+            <table className="table" style={{ border: "2px solid black" }}>
+              <thead className="tblHeader" style={{ backgroundColor: "black" }}>
                 <tr>
                   <th scope="col" style={{ color: "white" }}>
                     Customer Name
@@ -99,6 +101,11 @@ export default function AdminPage() {
                               );
                             })
                           }
+                          style={{
+                            borderRadius: "5px",
+                            padding: "5px",
+                            border: "1px solid black",
+                          }}
                         >
                           <option value="pending">Pending</option>
                           <option value="shipped">Shipped</option>
@@ -106,7 +113,6 @@ export default function AdminPage() {
                           <option value="cancelled">Cancelled</option>
                         </select>
                       </td>
-                      <br></br>
                     </tr>
                   </tbody>
                 );

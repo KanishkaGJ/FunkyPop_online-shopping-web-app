@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 
@@ -6,6 +7,7 @@ import CustomerSignup from "./components/CustomerSignup";
 import Testpage from "./components/Testpage";
 import SellerLogin from "./components/SellerLogin";
 import SellerSignup from "./components/SellerSignup";
+import AddProduct from "./components/AddProduct";
 import Button from "./components/Button";
 import ImageGrid from "./components/ImageGrid";
 import axios from "axios";
@@ -36,6 +38,7 @@ function App() {
 
         <Route path="/slogin" element={<SellerLogin/>}></Route>
         <Route path="/ssignup" element={<SellerSignup/>}></Route>
+        <Route path="/addP" element={<AddProduct/>}></Route>
 
         <Route path="/image" element={<Button/>}></Route>
         <Route path="/grid" element={<ImageGrid photos={photos}/>}></Route>

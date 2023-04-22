@@ -9,6 +9,9 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(cors({credentials: true, origin:"http://localhost:3001"}));
+app.use(bodyParser.json());
+
 
 //admin route
 const admin_router = require("./Routes/admin-route");
@@ -53,6 +56,9 @@ app.use("/sellerRate", sellerRate_router);
 
 const sellerRouter = require('./Routes/seller-route');
 app.use("/seller", sellerRouter);
+
+const productRouter = require('./Routes/product-route');
+app.use("/product", productRouter);
 
 
 app.listen(PORT, () => {

@@ -13,17 +13,15 @@ export default function AdminSignin() {
   function sendData(e) {
     e.preventDefault();
     const newLogin = {
-        email: AdminEmail,
-        password: AdminPassword,
+      email: AdminEmail,
+      password: AdminPassword,
     };
 
     //send http request
-    axios
-      .post("http://localhost:8070/admin/login", newLogin)
-      .then((resp) => {
-        //alert("Login Successful");
-        navigate("/adminPage"); // navigate to new page upon successful login
-      });
+    axios.post("http://localhost:8070/admin/login", newLogin).then((resp) => {
+      //alert("Login Successful");
+      navigate("/adminPage"); // navigate to new page upon successful login
+    });
   }
 
   return (

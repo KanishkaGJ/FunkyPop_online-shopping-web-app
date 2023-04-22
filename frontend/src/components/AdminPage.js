@@ -52,14 +52,24 @@ export default function AdminPage() {
           style={{ width: "100%", height: window.innerHeight }}
         >
           <center>
-            <table className="table">
-              <thead>
+            <table className="table" style={{ border: "2px solid black" , borderRadius:"10px"}}>
+              <thead style={{ backgroundColor: "black" }}>
                 <tr>
-                  <th scope="col">Customer Name</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Order Date</th>
-                  <th scope="col">Status</th>
+                  <th scope="col" style={{ color: "white" }}>
+                    Customer Name
+                  </th>
+                  <th scope="col" style={{ color: "white" }}>
+                    Product Name
+                  </th>
+                  <th scope="col" style={{ color: "white" }}>
+                    Quantity
+                  </th>
+                  <th scope="col" style={{ color: "white" }}>
+                    Order Date
+                  </th>
+                  <th scope="col" style={{ color: "white" }}>
+                    Status
+                  </th>
                 </tr>
               </thead>
               {adm.map((data) => {

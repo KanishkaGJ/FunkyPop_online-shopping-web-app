@@ -68,23 +68,6 @@ export default function CustomerProfile() {
       });
   };
 
-  // const submit = (_id) => {
-  //   confirmAlert({
-  //     title: "Confirm to Delete",
-  //     message: "Are you sure to do this?",
-  //     buttons: [
-  //       {
-  //         label: "Yes",
-  //         onClick: () => onDelete(_id),
-  //       },
-  //       {
-  //         label: "No",
-  //         //onClick: () => alert('Click No')
-  //       },
-  //     ],
-  //   });
-  // };
-
   if (!customer) {
     return <div>Loading...</div>;
   }
@@ -96,68 +79,80 @@ export default function CustomerProfile() {
           <form className="login100-form validate-form p-l-55 p-r-55 p-t-178">
             <span className="login100-form-title">Customer Profile</span>
 
-            <div className="fieldNames"></div>
-
-            <div className="inputFields">
-              <div className="alignLine m-b-20">
-                {/* <span stlle="margin-right:10px;">Name:</span> */}
-                <input
-                  className="input200 m-l-16"
-                  type="text"
-                  value={CustomerName}
-                  name="CustomerName"
-                  onChange={(e) => {
-                    setCustomerName(e.target.value);
-                  }}
-                />
+            <div className="profileParent">
+              <div className="floatchild">
+                <div className="leftfloat">
+                  <div className="m-t-20 m-b-60">Name: </div>
+                  <div className="m-b-50">Email: </div>
+                  <div className="m-b-58">Contact Num: </div>
+                  <div className="m-b-50"> Address: </div>
+                  <div className="m-b-40">Username: </div>
+                </div>
               </div>
 
-              <div className="alignLine m-b-20">
-                <input
-                  className="input200 m-l-16"
-                  type="text"
-                  value={CustomerEmail}
-                  name="CustomerEmail"
-                  onChange={(e) => {
-                    setCustomerEmail(e.target.value);
-                  }}
-                />
-              </div>
+              <div className="floatchild">
+                <div className="rightfloat">
+                  <div className="alignLine m-b-20">
+                    {/* <span stlle="margin-right:10px;">Name:</span> */}
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={CustomerName}
+                      name="CustomerName"
+                      onChange={(e) => {
+                        setCustomerName(e.target.value);
+                      }}
+                    />
+                  </div>
 
-              <div className="alignLine m-b-20">
-                <input
-                  className="input200 m-l-16"
-                  type="text"
-                  value={ContactNum}
-                  name="ContactNum"
-                  onChange={(e) => {
-                    setContactNum(e.target.value);
-                  }}
-                />
-              </div>
+                  <div className="alignLine m-b-20">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={CustomerEmail}
+                      name="CustomerEmail"
+                      onChange={(e) => {
+                        setCustomerEmail(e.target.value);
+                      }}
+                    />
+                  </div>
 
-              <div className="alignLine m-b-20">
-                <input
-                  className="input200 m-l-16"
-                  type="text"
-                  value={Address}
-                  name="ContactNum"
-                  onChange={(e) => {
-                    setAddress(e.target.value);
-                  }}
-                />
-              </div>
+                  <div className="alignLine m-b-20">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={ContactNum}
+                      name="ContactNum"
+                      onChange={(e) => {
+                        setContactNum(e.target.value);
+                      }}
+                    />
+                  </div>
 
-              <div className="alignLine m-b-16">
-                <input
-                  className="input200 m-l-16"
-                  type="text"
-                  value={CusUsername}
-                  name="CusUsername"
-                  onChange={(e) => {
-                    setCusUsername(e.target.value);
-                  }}
-                />
+                  <div className="alignLine m-b-20">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={Address}
+                      name="ContactNum"
+                      onChange={(e) => {
+                        setAddress(e.target.value);
+                      }}
+                    />
+                  </div>
+
+                  <div className="alignLine m-b-50">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={CusUsername}
+                      name="CusUsername"
+                      onChange={(e) => {
+                        setCusUsername(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 

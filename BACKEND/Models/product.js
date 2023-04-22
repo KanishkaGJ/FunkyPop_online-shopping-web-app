@@ -13,7 +13,7 @@ const productSchema = new Schema({
     },
 
     productName:{ // name of the product
-        type: Number,
+        type: String,
         required: true
     },
 

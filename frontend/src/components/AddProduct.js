@@ -56,23 +56,23 @@ export default function AddProduct() {
                 </span>
 
                 <div className="wrap-input100 validate-input m-b-16" data-validate="Enter product ID">
-                    <input className="input100" type="text" name="username" placeholder="Product ID" 
+                    <input className="input100" type="text" name="pid" placeholder="Product ID" 
         onChange={(e)=>{
             setPID(e.target.value);
         }}/>
                     <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="text" name="pass" placeholder="Product name"
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter product name">
+                    <input className="input100" type="text" name="pname" placeholder="Product name"
         onChange={(e)=>{
             setPName(e.target.value);
         }}/>
                     <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="text" name="pass" placeholder="Quantity"
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter quantity">
+                    <input className="input100" type="text" name="quantity" placeholder="Quantity"
         onChange={(e)=>{
 
             setQuantity(e.target.value);
@@ -80,32 +80,32 @@ export default function AddProduct() {
                     <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="text" name="pass" placeholder="Type"
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter type">
+                    <input className="input100" type="text" name="type" placeholder="Type"
         onChange={(e)=>{
             setType(e.target.value);
         }}/>
                     <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="text" name="pass" placeholder="Color"
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter color">
+                    <input className="input100" type="text" name="color" placeholder="Color"
         onChange={(e)=>{
             setColor(e.target.value);
         }}/>
                     <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input className="input100" type="text" name="pass" placeholder="Size"
+                <div className="wrap-input100 validate-input m-b-16" data-validate = "Please enter size">
+                    <input className="input100" type="text" name="size" placeholder="Size"
         onChange={(e)=>{
             setSize(e.target.value);
         }}/>
                     <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-35" data-validate = "Please enter password">
-                    <input className="input100" type="text" name="pass" placeholder="Product description"
+                <div className="wrap-input100 validate-input m-b-35" data-validate = "Please enter product description">
+                    <input className="input100" type="text" name="pdescrip" placeholder="Product description"
         onChange={(e)=>{
             setPDescrip(e.target.value);
         }}/>

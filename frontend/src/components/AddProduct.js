@@ -115,10 +115,12 @@ export default function AddProduct() {
                     <button type="submit" className="login100-form-btn">
                         Add Product
                     </button>
-                <div>
-                    <Link to="" className='productLink' >
-                        I dont want to be in this page
+                    <div className="flex-col-c p-t-35 p-b-40">
+                    <span className="txt1 p-b-9">
+                    <Link to="/signup" className="txt3">
+                        I don't want to be in ths page
                     </Link>
+                    </span>
                 </div>
 
                 

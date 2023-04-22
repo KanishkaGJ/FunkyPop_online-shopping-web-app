@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
 import "../css/cusProfile.css";
 axios.defaults.withCredentials = true;
@@ -61,7 +60,7 @@ export default function CustomerProfile() {
       .delete(`http://localhost:8070/customer/delete/${customer._id}`)
       .then(() => {
         alert("Profile Deleted");
-        history.navigate("/login");
+        history("/login");
       })
       .catch((err) => {
         alert(err);

@@ -21,8 +21,10 @@
 // export default ImageGrid;
 
 import React from "react";
+import '../css/imageGird.css';
 
 const ImageGrid = ({ photos }) => {
+  console.log(photos);
   return (
     <>
       <h1>Our Products</h1>

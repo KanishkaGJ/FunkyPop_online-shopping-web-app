@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 
@@ -17,8 +17,7 @@ function App() {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
-    axios
-    .get("http://localhost:8080/api/get")
+    axios.get("http://localhost:8080/api/get") 
     .then((res) => {
       console.log(res.data);
       setPhotos(res.data);

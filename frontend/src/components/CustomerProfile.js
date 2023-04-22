@@ -61,7 +61,7 @@ export default function CustomerProfile() {
       .delete(`http://localhost:8070/customer/delete/${customer._id}`)
       .then(() => {
         alert("Profile Deleted");
-        history("/login");
+        history.navigate("/login");
       })
       .catch((err) => {
         alert(err);

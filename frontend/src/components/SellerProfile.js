@@ -70,43 +70,54 @@ export default function SellerProfile() {
           <form className="login100-form validate-form p-l-55 p-r-55 p-t-178">
             <span className="login100-form-title"> Seller Profile</span>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Name:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={SellerName}
-                name="SellerName"
-                onChange={(e) => {
-                  setSellerName(e.target.value);
-                }}
-              />
-            </div>
+            <div className="profileParent">
+              <div className="floatchildseller">
+                <div className="leftfloatseller">
+                  <div className="m-t-20 m-b-60">Name: </div>
+                  <div className="m-b-50">Email: </div>
+                  <div className="m-b-58">Username: </div>
+                </div>
+              </div>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Email:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={SellerEmail}
-                name="SellerEmail"
-                onChange={(e) => {
-                  setSellerEmail(e.target.value);
-                }}
-              />
-            </div>
+              <div className="floatchildseller">
+                <div className="rightfloatseller">
+                  <div className="alignLine m-b-20">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={SellerName}
+                      name="SellerName"
+                      onChange={(e) => {
+                        setSellerName(e.target.value);
+                      }}
+                    />
+                  </div>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Username:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={SellerUsername}
-                name="SellerUsername"
-                onChange={(e) => {
-                  setSellerUsername(e.target.value);
-                }}
-              />
+                  <div className="alignLine m-b-20">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={SellerEmail}
+                      name="SellerEmail"
+                      onChange={(e) => {
+                        setSellerEmail(e.target.value);
+                      }}
+                    />
+                  </div>
+
+                  <div className="alignLine m-b-20">
+                    <input
+                      className="input200 m-l-16"
+                      type="text"
+                      value={SellerUsername}
+                      name="SellerUsername"
+                      onChange={(e) => {
+                        setSellerUsername(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <button

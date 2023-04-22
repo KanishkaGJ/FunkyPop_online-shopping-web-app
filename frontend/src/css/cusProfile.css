@@ -35,3 +35,10 @@
   margin-left: -50%; 
   /* height: 100px;  */
  }
+ .floatchildseller{
+  float:left;
+ }
+ .rightfloatseller{
+  margin-left: 10%; 
+  margin-right: -5%;
+ }

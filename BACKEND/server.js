@@ -4,11 +4,14 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const connectDB = require("./Config/db");
 const app = express();
 require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 
+//db connection
+connectDB();
 
 //admin route
 const admin_router = require("./Routes/admin-route");
@@ -46,8 +49,9 @@ app.use("/productRate", productRate_router);
 const sellerRate_router = require("./Routes/sellerRate-route");
 app.use("/sellerRate", sellerRate_router);
 //import the backend routes
-const customerRouter = require('./Routes/customer-route');
-app.use("/customer", customerRouter);
+//const customerRouter = require('./Routes/customer-route');
+//
+//app.use("/customer", customerRouter);
 
 const sellerRouter = require('./Routes/seller-route');
 app.use("/seller", sellerRouter);

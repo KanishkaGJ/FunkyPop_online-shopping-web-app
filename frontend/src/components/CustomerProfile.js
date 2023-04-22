@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
 import "../css/cusProfile.css";
@@ -6,6 +7,7 @@ axios.defaults.withCredentials = true;
 // let firstRender = true;
 
 export default function CustomerProfile() {
+  const history = useNavigate();
   const [customer, setCustomer] = useState();
 
   const [CustomerName, setCustomerName] = useState("");
@@ -56,26 +58,32 @@ export default function CustomerProfile() {
 
   const onDelete = (_id) => {
     axios
-      .delete("http://localhost:8070/material/delete/" + customer._id)
-      .then(() => {});
+      .delete(`http://localhost:8070/customer/delete/${customer._id}`)
+      .then(() => {
+        alert("Profile Deleted");
+        history("/login");
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
-  const submit = (_id) => {
-    confirmAlert({
-      title: "Confirm to Delete",
-      message: "Are you sure to do this?",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => onDelete(_id),
-        },
-        {
-          label: "No",
-          //onClick: () => alert('Click No')
-        },
-      ],
-    });
-  };
+  // const submit = (_id) => {
+  //   confirmAlert({
+  //     title: "Confirm to Delete",
+  //     message: "Are you sure to do this?",
+  //     buttons: [
+  //       {
+  //         label: "Yes",
+  //         onClick: () => onDelete(_id),
+  //       },
+  //       {
+  //         label: "No",
+  //         //onClick: () => alert('Click No')
+  //       },
+  //     ],
+  //   });
+  // };
 
   if (!customer) {
     return <div>Loading...</div>;
@@ -86,71 +94,71 @@ export default function CustomerProfile() {
       <div className="container-login100">
         <div className="wrap-login100">
           <form className="login100-form validate-form p-l-55 p-r-55 p-t-178">
-            <span className="login100-form-title">Profile</span>
+            <span className="login100-form-title">Customer Profile</span>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Name:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={CustomerName}
-                name="CustomerName"
-                onChange={(e) => {
-                  setCustomerName(e.target.value);
-                }}
-              />
-            </div>
+            <div className="fieldNames"></div>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Email:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={CustomerEmail}
-                name="CustomerEmail"
-                onChange={(e) => {
-                  setCustomerEmail(e.target.value);
-                }}
-              />
-            </div>
+            <div className="inputFields">
+              <div className="alignLine m-b-20">
+                {/* <span stlle="margin-right:10px;">Name:</span> */}
+                <input
+                  className="input200 m-l-16"
+                  type="text"
+                  value={CustomerName}
+                  name="CustomerName"
+                  onChange={(e) => {
+                    setCustomerName(e.target.value);
+                  }}
+                />
+              </div>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Tel.No:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={ContactNum}
-                name="ContactNum"
-                onChange={(e) => {
-                  setContactNum(e.target.value);
-                }}
-              />
-            </div>
+              <div className="alignLine m-b-20">
+                <input
+                  className="input200 m-l-16"
+                  type="text"
+                  value={CustomerEmail}
+                  name="CustomerEmail"
+                  onChange={(e) => {
+                    setCustomerEmail(e.target.value);
+                  }}
+                />
+              </div>
 
-            <div className="alignLine m-b-20">
-              <span stlle="margin-right:10px;">Address:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={Address}
-                name="ContactNum"
-                onChange={(e) => {
-                  setAddress(e.target.value);
-                }}
-              />
-            </div>
+              <div className="alignLine m-b-20">
+                <input
+                  className="input200 m-l-16"
+                  type="text"
+                  value={ContactNum}
+                  name="ContactNum"
+                  onChange={(e) => {
+                    setContactNum(e.target.value);
+                  }}
+                />
+              </div>
 
-            <div className="alignLine m-b-16">
-              <span stlle="margin-right:10px;">Username:</span>
-              <input
-                className="input200 m-l-16"
-                type="text"
-                value={CusUsername}
-                name="CusUsername"
-                onChange={(e) => {
-                  setCusUsername(e.target.value);
-                }}
-              />
+              <div className="alignLine m-b-20">
+                <input
+                  className="input200 m-l-16"
+                  type="text"
+                  value={Address}
+                  name="ContactNum"
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="alignLine m-b-16">
+                <input
+                  className="input200 m-l-16"
+                  type="text"
+                  value={CusUsername}
+                  name="CusUsername"
+                  onChange={(e) => {
+                    setCusUsername(e.target.value);
+                  }}
+                />
+              </div>
             </div>
 
             <button
@@ -161,7 +169,10 @@ export default function CustomerProfile() {
               Save and Update
             </button>
 
-            <button className="login100-form-btn m-b-16 m-t-16">
+            <button
+              className="login100-form-btn m-b-16 m-t-16"
+              onClick={() => onDelete(customer._id)}
+            >
               Delete Account
             </button>
           </form>

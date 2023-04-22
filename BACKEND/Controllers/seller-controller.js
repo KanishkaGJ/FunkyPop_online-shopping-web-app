@@ -43,7 +43,7 @@ const deleteSeller = async (req, res, next) => {
 };
 
 //get all sellers
-const getSellers = async (req, res, next) => {
+const getAllSellers = async (req, res, next) => {
   Seller.find()
     .then((sellers) => {
       res.json(sellers);
@@ -55,4 +55,4 @@ const getSellers = async (req, res, next) => {
 
 exports.updateSeller = updateSeller;
 exports.deleteSeller = deleteSeller;
-exports.getSellers = getSellers;
+exports.getAllSellers = getAllSellers;

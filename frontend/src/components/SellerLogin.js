@@ -37,7 +37,7 @@ export default function CustomerLogin() {
             onSubmit={sendData}
             className="login100-form validate-form p-l-55 p-r-55 p-t-178"
           >
-            <span className="login100-form-title">Sign In</span>
+            <span className="login100-form-title">Seller Sign In</span>
 
             <div
               className="wrap-input100 validate-input m-b-16"

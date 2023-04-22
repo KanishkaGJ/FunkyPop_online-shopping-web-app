@@ -50,25 +50,13 @@ export default function SellerProfile() {
 
   const onDelete = (_id) => {
     axios
-      .delete("http://localhost:8070/material/delete/" + seller._id)
-      .then(() => {});
-  };
-
-  const submit = (_id) => {
-    confirmAlert({
-      title: "Confirm to Delete",
-      message: "Are you sure to do this?",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => onDelete(_id),
-        },
-        {
-          label: "No",
-          //onClick: () => alert('Click No')
-        },
-      ],
-    });
+      .delete(`http://localhost:8070/seller/delete/${seller._id}`)
+      .then(() => {
+        alert("Profile Deleted");
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   if (!seller) {
@@ -80,7 +68,7 @@ export default function SellerProfile() {
       <div className="container-login100">
         <div className="wrap-login100">
           <form className="login100-form validate-form p-l-55 p-r-55 p-t-178">
-            <span className="login100-form-title">Profile</span>
+            <span className="login100-form-title"> Seller Profile</span>
 
             <div className="alignLine m-b-20">
               <span stlle="margin-right:10px;">Name:</span>
@@ -129,7 +117,12 @@ export default function SellerProfile() {
               Save and Update
             </button>
 
-            <button className="login100-form-btn m-b-16 m-t-16">
+            <button
+              className="login100-form-btn m-b-16 m-t-16"
+              onClick={() => {
+                onDelete(seller._id);
+              }}
+            >
               Delete Account
             </button>
           </form>

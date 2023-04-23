@@ -45,12 +45,7 @@ app.use("/productRate", productRate_router);
 //seller rate route
 const sellerRate_router = require("./Routes/sellerRate-route");
 app.use("/sellerRate", sellerRate_router);
-//import the backend routes
-//const customerRouter = require('./Routes/customer-route');
-//
-//app.use("/customer", customerRouter);
-// const customerRouter = require('./Routes/customer-route');
-// app.use("/customer", customerRouter);
+
 const customerRouter = require("./Routes/customer-route");
 app.use("/customer", customerRouter);
 
@@ -59,6 +54,9 @@ app.use("/seller", sellerRouter);
 
 const productRouter = require("./Routes/product-route");
 app.use("/product", productRouter);
+
+const deliveryRouter = require("./Routes/delivery-route");
+app.use("/delivery", deliveryRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);

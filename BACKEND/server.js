@@ -45,12 +45,7 @@ app.use("/productRate", productRate_router);
 //seller rate route
 const sellerRate_router = require("./Routes/sellerRate-route");
 app.use("/sellerRate", sellerRate_router);
-//import the backend routes
-//const customerRouter = require('./Routes/customer-route');
-//
-//app.use("/customer", customerRouter);
-// const customerRouter = require('./Routes/customer-route');
-// app.use("/customer", customerRouter);
+
 const customerRouter = require("./Routes/customer-route");
 app.use("/customer", customerRouter);
 

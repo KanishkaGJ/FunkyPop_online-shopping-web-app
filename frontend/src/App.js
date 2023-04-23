@@ -17,6 +17,7 @@ import CartPage from "./components/CartPage";
 import NavBar from "./components/NavBar";
 import BackDrop from "./components/BackDrop";
 import SideDrawer from "./components/SideDrawer";
+import CartItem from "./components/CartItem";
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
       <SideDrawer show={sideToggle} click={() => setSideToggle(false)}/>
       <Routes>
         {/*<Route exact path="/" compoment={HomePage}></Route>*/}
-        <Route exact path="/cart" compoment={CartPage}></Route>
+        <Route exact path="/cart" element={<><CartPage/></>}></Route>
         <Route path="/login" element={<CustomerLogin/>}></Route>
         <Route path="/signup" element={<CustomerSignup/>}></Route>
         <Route path="/users" element={<Testpage/>}></Route>

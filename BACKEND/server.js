@@ -10,19 +10,14 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 
-//db connection
-connectDB();
-app.use(cors({credentials: true, origin:"http://localhost:3001"}));
+app.use(cors({ credentials: true, origin: "http://localhost:3001" }));
 app.use(bodyParser.json());
-
 
 //admin route
 const admin_router = require("./Routes/admin-route");
 app.use("/admin", admin_router);
 
 const PORT = process.env.PORT || 8080;
-
-
 
 const URL = process.env.MONGODB_URL;
 
@@ -36,10 +31,8 @@ mongoose.connect(URL, () => {
 const connection = mongoose.connection;
 
 connection.once("open", () => {
-    console.log("MongoDB connection establishment is successful!!!");
+  console.log("MongoDB connection establishment is successful!!!");
 });
-
-
 
 //order route
 const order_router = require("./Routes/order-route");
@@ -58,13 +51,14 @@ app.use("/sellerRate", sellerRate_router);
 //app.use("/customer", customerRouter);
 // const customerRouter = require('./Routes/customer-route');
 // app.use("/customer", customerRouter);
+const customerRouter = require("./Routes/customer-route");
+app.use("/customer", customerRouter);
 
-const sellerRouter = require('./Routes/seller-route');
+const sellerRouter = require("./Routes/seller-route");
 app.use("/seller", sellerRouter);
 
-const productRouter = require('./Routes/product-route');
+const productRouter = require("./Routes/product-route");
 app.use("/product", productRouter);
-
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);

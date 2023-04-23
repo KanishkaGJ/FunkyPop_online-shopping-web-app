@@ -57,11 +57,6 @@ export default function ProductRate() {
                 textAlign: "center",
               }}
             >
-              {/* {meanValue && (
-                <div>
-                  <h5>Rate for the product: {meanValue.toFixed(2)}</h5>
-                </div>
-              )} */}
               {meanValue && (
                 <div>
                   <h5>

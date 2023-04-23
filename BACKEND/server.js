@@ -60,6 +60,9 @@ app.use("/seller", sellerRouter);
 const productRouter = require("./Routes/product-route");
 app.use("/product", productRouter);
 
+const deliveryRouter = require("./Routes/delivery-route");
+app.use("/delivery", deliveryRouter);
+
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);
 });

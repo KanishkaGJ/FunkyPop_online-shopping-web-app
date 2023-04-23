@@ -52,3 +52,26 @@
 .cartPage__right div button:hover {
     opacity: 0.6;
 }
+
+
+@media (max-width: 1320px) {
+    .cartPage{
+        max-width: 900px;
+        flex-direction: column;
+    }
+
+    .cartPage__left{
+        margin: 0;
+    }
+
+    .cartPage__right{
+        margin: 1rem;
+    }
+
+}
+
+@media (max-width: 960px) {
+    .cartPage{
+        max-width: 800px;
+    }
+}

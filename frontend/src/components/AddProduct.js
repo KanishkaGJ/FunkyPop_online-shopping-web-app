@@ -3,6 +3,7 @@ import {useNavigate, Link} from 'react-router-dom';
 import axios from "axios";
 import '../css/customerLogin.css';
 
+
 export default function AddProduct() {
 
 //   const history = useNavigate();
@@ -45,6 +46,32 @@ export default function AddProduct() {
     })
 
   }
+
+
+    const handleChange = (e) => { // e = event
+        e.preventDefault();
+
+        const formData = new FormData()
+        formData.append("photo", e.target.files[0])
+
+        axios.post("http://localhost:8080/api/save", formData)
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+
+//   return <label className="button" htmlFor="file_picker">
+//     <AiFillFileAdd/>
+//     <input 
+//         hidden 
+//         type="file" 
+//         name="file_picker" 
+//         id="file_picker" 
+//         onChange={(e) => handleChange(e)}
+//     />
+//   </label>;
+
   
   return (
     <div className="limiter">
@@ -111,13 +138,17 @@ export default function AddProduct() {
         }}/>
                     <span className="focus-input100"></span>
                 </div>
+
                 
+                    <button type="file" htmlFor="file_picker" className="login100-form-btn" name="file_picker" id="file_picker" onChange={(e) => handleChange(e)}>
+                        Add Product
+                    </button>
                     <button type="submit" className="login100-form-btn">
                         Add Product
                     </button>
                 <div>
                     <Link to="" className='productLink' >
-                        I dont want to be in this page
+                        I don't want to be in this page
                     </Link>
                 </div>
 

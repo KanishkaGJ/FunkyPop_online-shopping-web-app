@@ -5,8 +5,8 @@ let product = require("../Models/product");
 //add products
 exports.addProduct = (req, res) => {
 
-    const { productID, productName, quantity, type, color, size, productDescription } = req.body;
-    const newProduct = new product({ productID, productName, quantity, type, color, size, productDescription });
+    const { productID, productName, quantity, type, color, size, productDescription, photo } = req.body;
+    const newProduct = new product({ productID, productName, quantity, type, color, size, productDescription, photo });
 
     newProduct
         .save()
@@ -52,7 +52,7 @@ exports.updateProduct = async (req, res) => {
 
     let productId = req.params.id;
 
-    const {productID, productName, quantity, type, color, size, productDescription } = req.body;
+    const {productID, productName, quantity, type, color, size, productDescription, photo } = req.body;
 
     const updateProduct = {
         productID, 
@@ -61,7 +61,8 @@ exports.updateProduct = async (req, res) => {
         type, 
         color, 
         size, 
-        productDescription, 
+        productDescription,
+        photo, 
        
     };
 

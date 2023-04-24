@@ -8,22 +8,10 @@ import Testpage from "./components/Testpage";
 import SellerLogin from "./components/SellerLogin";
 import SellerSignup from "./components/SellerSignup";
 import AddProduct from "./components/AddProduct";
-import Button from "./components/Button";
-import ImageGrid from "./components/ImageGrid";
-import axios from "axios";
+
 
 function App() {
 
-  const [photos, setPhotos] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/get") 
-    .then((res) => {
-      console.log(res.data);
-      setPhotos(res.data);
-    })
-    .catch((err) => console.log(err));
-  }, []);
 
 
 
@@ -39,8 +27,7 @@ function App() {
         <Route path="/ssignup" element={<SellerSignup/>}></Route>
         <Route path="/addP" element={<AddProduct/>}></Route>
 
-        <Route path="/image" element={<Button/>}></Route>
-        <Route path="/grid" element={<ImageGrid photos={photos}/>}></Route>
+       
         
       </Routes>
       </Router>

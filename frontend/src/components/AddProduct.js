@@ -23,6 +23,7 @@ export default function AddProduct() {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const [productDescription, setPDescrip] = useState("");
+  const [photo, setPhoto] = useState("");
 
   function sendData(e){
 
@@ -34,13 +35,14 @@ export default function AddProduct() {
         type,
         color,
         size,
-        productDescription
+        productDescription,
+        photo,
     }
     console.log(newProduct);
     //send http request
     axios.post("http://localhost:8080/product/addProduct",newProduct).then(()=>{
         alert("New Product added");
-        // history("/login");
+    
     }).catch((err)=>{
         alert(err)
     })
@@ -48,18 +50,7 @@ export default function AddProduct() {
   }
 
 
-    const handleChange = (e) => { // e = event
-        e.preventDefault();
-
-        const formData = new FormData()
-        formData.append("photo", e.target.files[0])
-
-        axios.post("http://localhost:8080/api/save", formData)
-        .then((res) => {
-            console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
+    
 
 //   return <label className="button" htmlFor="file_picker">
 //     <AiFillFileAdd/>
@@ -137,11 +128,10 @@ export default function AddProduct() {
             setPDescrip(e.target.value);
         }}/>
                     <span className="focus-input100"></span>
-                </div>
-
                 
-                    <button type="file" htmlFor="file_picker" className="login100-form-btn" name="file_picker" id="file_picker" onChange={(e) => handleChange(e)}>
-                        Add Product
+                </div>
+                    <button type="file" htmlFor="file_picker" className="login100-form-btn" name="file_picker" id="file_picker" onChange={(e) => {setPhoto(e.target.value);}}>
+                        Add Image
                     </button>
                     <button type="submit" className="login100-form-btn">
                         Add Product

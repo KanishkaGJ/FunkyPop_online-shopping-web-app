@@ -25,86 +25,37 @@ export default function AdminSignin() {
   }
 
   return (
-    // <div className="limiter">
-    //   <div className="container-login100">
-    //     <div className="wrap-login100">
-    //       <form
-    //         onSubmit={sendData}
-    //         className="login100-form validate-form p-l-55 p-r-55 p-t-178"
-    //       >
-    //         <span className="login100-form-title">Admin Sign In</span>
+    <div className="limiter">
+      <div className="container-login100">
+        <div className="wrap-login100">
+          <form
+            onSubmit={sendData}
+            className="login100-form validate-form p-l-55 p-r-55 p-t-178"
+          >
+            <span className="login100-form-title">Admin Sign In</span>
 
-    //         <div
-    //           className="wrap-input100 validate-input m-b-16"
-    //           data-validate="Please enter username"
-    //         >
-    //           <input
-    //             className="input100"
-    //             type="text"
-    //             name="username"
-    //             placeholder="Username"
-    //             onChange={(e) => {
-    //               setAdminEmail(e.target.value);
-    //             }}
-    //           />
-    //           <span className="focus-input100"></span>
-    //         </div>
-
-    //         <div
-    //           className="wrap-input100 validate-input"
-    //           data-validate="Please enter password"
-    //         >
-    //           <input
-    //             className="input100"
-    //             type="password"
-    //             name="pass"
-    //             placeholder="Password"
-    //             onChange={(e) => {
-    //               setAdminPassword(e.target.value);
-    //             }}
-    //           />
-    //           <span className="focus-input100"></span>
-    //         </div>
-
-    //         <br></br>
-    //         <br></br>
-
-    //         <div className="container-login100-form-btn">
-    //           <button className="login100-form-btn">Sign in</button>
-    //         </div>
-    //         <br></br>
-    //       </form>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th colspan="2">Admin Sign In</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Username:</td>
-          <td>
-            <div class="input-wrapper">
+            <div
+              className="wrap-input100 validate-input m-b-16"
+              data-validate="Please enter username"
+            >
               <input
+                className="input100"
                 type="text"
                 name="username"
-                placeholder="Username"
+                placeholder="Email"
                 onChange={(e) => {
                   setAdminEmail(e.target.value);
                 }}
               />
+              <span className="focus-input100"></span>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td>
-            <div class="input-wrapper">
+
+            <div
+              className="wrap-input100 validate-input"
+              data-validate="Please enter password"
+            >
               <input
+                className="input100"
                 type="password"
                 name="pass"
                 placeholder="Password"
@@ -112,17 +63,20 @@ export default function AdminSignin() {
                   setAdminPassword(e.target.value);
                 }}
               />
+              <span className="focus-input100"></span>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <div class="button-wrapper">
-              <button>Sign in</button>
+
+            <br></br>
+            <div className="container-login100-form-btn">
+              <br></br>
+              <button className="login100-form-btn">Log in</button>
+              <br></br>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+            <br></br>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }

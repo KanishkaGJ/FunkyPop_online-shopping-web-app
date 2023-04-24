@@ -85,7 +85,7 @@ export default function productView() {
                                         <th>type</th>
                                         <th>color</th>
                                         <th>size</th>
-                                        <th>productDescription</th>
+                                        <th>product Description</th>
 										<th>Update</th>
 										<th>Delete</th>
 									</tr>
@@ -104,7 +104,7 @@ export default function productView() {
                                                 <td>{data.size}</td>
                                                 <td>{data.productDescription}</td>
 												<td>
-													<Link to='/addP'>
+													<Link to='/updateP'>
 														<button className="btn btn-dark" onClick={() => setID(data._id, data.productID, data.productName, data.quantity, data.type, data.color, data.size, data.productDescription)}>
 															Update
 														</button>

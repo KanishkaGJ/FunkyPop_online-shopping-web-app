@@ -9,6 +9,8 @@ import SellerLogin from "./components/SellerLogin";
 import SellerSignup from "./components/SellerSignup";
 import AddProduct from "./components/AddProduct";
 import ViewProduct from "./components/ViewProduct";
+import UpdateProduct from "./components/UpdateProduct";
+import ClientProduct from "./components/ClientProduct";
 
 function App() {
   return (
@@ -20,8 +22,11 @@ function App() {
 
         <Route path="/slogin" element={<SellerLogin/>}></Route>
         <Route path="/ssignup" element={<SellerSignup/>}></Route>
+
         <Route path="/addP" element={<AddProduct/>}></Route>
         <Route path="/viewP" element={<ViewProduct/>}></Route>
+        <Route path="/updateP" element={<UpdateProduct/>}></Route>
+        <Route path="/clientP" element={<clientProduct/>}></Route>
       </Routes>
       </Router>
   );

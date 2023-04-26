@@ -1,9 +1,30 @@
 import React , {useState,useEffect} from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SingleProduct() {
 
+    const navigate = useNavigate();
+    const [ID , setID] = useState(null);
+    const [productID, setProID] = useState('');
+    const [productName, setProName] = useState('');
+    const [quantity, setProQuan] = useState('');
+    const [type, setProType] = useState('');
+    const [color, setProColor] = useState('');
+    const [size, setProSize] = useState('');
+    const [productDescription, setProDescrip] = useState('');
+
+    useEffect(()=>{
+        setID(localStorage.getItem('ID'));
+        setProID(localStorage.getItem('productID'));
+        setProName(localStorage.getItem('productName'));
+        setProQuan(localStorage.getItem('quantity'));
+        setProType(localStorage.getItem('type'));
+        setProColor(localStorage.getItem('color'));
+        setProSize(localStorage.getItem('size'));
+        setProDescrip(localStorage.getItem('productDescription'));
+
+    },[]);
 
 	
     
@@ -24,15 +45,21 @@ return (
                         <div class="col-md-6">
                             <div class="product p-4">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </div> <i class="fa fa-shopping-cart text-muted"></i>
+                                    <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <Link to="/clientP"><span class="ml-1">Back</span></Link> </div> <i class="fa fa-shopping-cart text-muted"></i>
                                 </div>
-                                <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">Men's clothing</span>
-                                    <h5 class="text-uppercase">Navy Blue T-shirt</h5>
+                                <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{type}</span>
+                                    <h5 class="text-uppercase">{productName}</h5>
                                     <div class="price d-flex flex-row align-items-center"> 
-                                        <span class="act-price">Rs.2000</span>  
+                                        <span class="act-price">{color}</span>  
+                                    </div>
+                                    <div class="price d-flex flex-row align-items-center"> 
+                                        <span class="act-price">{size}</span>  
                                     </div>
                                 </div>
-                                <p class="about">Get our comfy Funky Pop Navy Blue Embroidery T-shirt today! Simply drop us a DM to place your order. Sized available - XS, S, M, L 100% Cotton</p>
+                                    <p class="about">{productDescription}</p>
+                                <div class="sizes mt-5">
+                                </div>
+                                    <p class="about">Number of items left: {quantity}</p>
                                 <div class="sizes mt-5">
                                 
                                 </div>

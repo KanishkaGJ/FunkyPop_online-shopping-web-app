@@ -18,7 +18,6 @@ export default function ClientProduct() {
 
   const setID = (_id, productID, productName, quantity, type, color, size, productDescription) => {
 
-
 		localStorage.setItem('productID', productID);
 		localStorage.setItem('productName', productName);
 		localStorage.setItem('quantity', quantity);
@@ -28,14 +27,14 @@ export default function ClientProduct() {
     localStorage.setItem('productDescription', productDescription);
 		localStorage.setItem('ID', _id);
 	};
-
+  // {`/products/${data._id}`}
  return (
   <>
     {product.map((data) => {
         return (
           <div className="ui">
             <div className="cards" key={data._id}>
-            <Link to={`/products/${data._id}`} onClick={() => setID(data._id, data.productID, data.productName, data.quantity, data.type, data.color, data.size, data.productDescription)}>
+            <Link to="/singleP" onClick={() => setID(data._id, data.productID, data.productName, data.quantity, data.type, data.color, data.size, data.productDescription)}>
               <div className="ui link cards">
                   <div className="card">
                   <div className="image">

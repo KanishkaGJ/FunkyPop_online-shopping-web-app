@@ -16,11 +16,11 @@ const CartItem = () => {
         <p className='cartItem__price'>2000.00</p>
 
         <select className='cartItem__select'>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
+            <option value='1' id='opt1'>1</option>
+            <option value='2' id='opt1'>2</option>
+            <option value='3' id='opt1'>3</option>
+            <option value='4' id='opt1'>4</option>
+            <option value='5' id='opt1'>5</option>
         </select>
 
         <button className='cartItem__deleteBtn'>

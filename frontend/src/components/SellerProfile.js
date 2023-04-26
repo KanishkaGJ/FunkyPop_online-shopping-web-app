@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../css/cusProfile.css";
 axios.defaults.withCredentials = true;
 // let firstRender = true;
 
 export default function SellerProfile() {
+  const navigate = useNavigate();
+
   const [seller, setSeller] = useState();
 
   const [SellerName, setSellerName] = useState("");
@@ -39,7 +42,8 @@ export default function SellerProfile() {
         withCredentials: true,
       })
       .then(() => {
-        alert("Profile Updated");
+        // alert("Profile Updated");
+        navigate("/signup");
       })
       .catch((err) => {
         alert(err);

@@ -18,24 +18,31 @@ import NavBar from "./components/NavBar";
 import BackDrop from "./components/BackDrop";
 import SideDrawer from "./components/SideDrawer";
 import CartItem from "./components/CartItem";
+import PayDeliver from "./components/PayDeliver";
+import ConfirmPurchase from "./components/ConfirmPurchase";
 
 function App() {
-
   const [sideToggle, setSideToggle] = useState(false);
 
-
   return (
-
     <Router>
       <NavBar click={() => setSideToggle(true)} />
-      <BackDrop show={sideToggle} click={() => setSideToggle(false)}/>
-      <SideDrawer show={sideToggle} click={() => setSideToggle(false)}/>
+      <BackDrop show={sideToggle} click={() => setSideToggle(false)} />
+      <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
       <Routes>
         {/*<Route exact path="/" compoment={HomePage}></Route>*/}
-        <Route exact path="/cart" element={<><CartPage/></>}></Route>
-        <Route path="/login" element={<CustomerLogin/>}></Route>
-        <Route path="/signup" element={<CustomerSignup/>}></Route>
-        <Route path="/users" element={<Testpage/>}></Route>
+        <Route
+          exact
+          path="/cart"
+          element={
+            <>
+              <CartPage />
+            </>
+          }
+        ></Route>
+        <Route path="/login" element={<CustomerLogin />}></Route>
+        <Route path="/signup" element={<CustomerSignup />}></Route>
+        <Route path="/users" element={<Testpage />}></Route>
         <Route path="/cusprofile" element={<CustomerProfile />}></Route>
         <Route path="/selprofile" element={<SellerProfile />}></Route>
 
@@ -46,6 +53,13 @@ function App() {
         <Route path="/slogin" element={<SellerLogin />}></Route>
         <Route path="/ssignup" element={<SellerSignup />}></Route>
         <Route path="/addP" element={<AddProduct />}></Route>
+
+        <Route path="/pay" element={<PayDeliver />}></Route>
+        {/* <Route
+          path="/confirmpay/:customerName/:customerPhone/:deliveryAddress/:tot"
+          element={<ConfirmPurchase />}
+        /> */}
+        <Route path="/confirmpay" element={<ConfirmPurchase />}></Route>
       </Routes>
     </Router>
   );

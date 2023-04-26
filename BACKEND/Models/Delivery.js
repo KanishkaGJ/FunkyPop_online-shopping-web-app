@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const deliverySchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const deliverySchema = new Schema({
+  
   deliveryAddress: {
     type: String,
     required: true,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../css/paymentDelivery.css";
 import "../css/cusLoginUtil.css";
@@ -13,16 +13,25 @@ export default function PayDeliver() {
   const [deliveryAddress, setdeliveryAddress] = useState("");
   const [tot, settot] = useState("");
 
-  const handleCheckout = (event) => {
-    event.preventDefault();
-    const formData = {
-      customerName,
-      customerPhone,
+  const handleCheckout = (e) => {
+    
+    e.preventDefault();
+    const newData = {
       deliveryAddress,
       tot,
+      customerName,
+      customerPhone,
     };
 
-    navigate(`/confirmpay?formData=${JSON.stringify(formData)}`);
+    console.log(newData);
+    axios.post("http://localhost:8070/delivery/deliveries",newData).then(()=>{
+        alert("New Delivery details added");
+        navigate(`/confirmpay?newData=${JSON.stringify(newData)}`);
+        //history("/confirmPay");
+    }).catch((err)=>{
+        alert(err)
+    })
+    //navigate(`/confirmpay?formData=${JSON.stringify(formData)}`);
     
     
   };
@@ -32,7 +41,7 @@ export default function PayDeliver() {
       <div className="row">
         <div className="col-75">
           <div className="container">
-            <form>
+            <form onSubmit={handleCheckout}>
               <div className="row">
                 <div className="col-50">
                   <h3 className="m-b-20">Delivery Details</h3>
@@ -41,7 +50,7 @@ export default function PayDeliver() {
                   </label>
                   <input
                     type="text"
-                    onClick={(e) => {
+                    onChange={(e) => {
                       setcustomerName(e.target.value);
                     }}
                   />
@@ -51,7 +60,7 @@ export default function PayDeliver() {
                   </label>
                   <input
                     type="text"
-                    onClick={(e) => {
+                    onChange={(e) => {
                       setcustomerPhone(e.target.value);
                     }}
                   />
@@ -60,7 +69,7 @@ export default function PayDeliver() {
                   </label>
                   <input
                     type="text"
-                    onClick={(e) => {
+                    onChange={(e) => {
                       setdeliveryAddress(e.target.value);
                     }}
                   />
@@ -70,7 +79,7 @@ export default function PayDeliver() {
                       <label htmlFor="state">tot</label>
                       <input
                         type="text"
-                        onClick={(e) => {
+                        onChange={(e) => {
                           settot(e.target.value);
                         }}
                       />
@@ -100,14 +109,15 @@ export default function PayDeliver() {
                   </div>
                 </div>
               </div>
-
-              <button
-                type="button"
-                className="paydeliverybtn"
-                onClick={handleCheckout}
-              >
-                Continue to Checkout
-              </button>
+              
+                <div>
+                  <button type="submit" className="paydeliverybtn">
+                    Continue to Checkout
+                  </button>
+                </div>
+              
+             
+              
             </form>
           </div>
         </div>

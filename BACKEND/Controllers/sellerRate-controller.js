@@ -3,13 +3,12 @@ const { route } = require('../Routes/sellerRate-route');
 
 //add seller rate
 exports.addSellerRate = (req, res) => {
-    const { customerName, sellerName, rate, comment, date } = req.body;
+    const { customerName, sellerName, rate, comment} = req.body;
     const newSellerRate = new SellerRate({
         customerName,
         sellerName,
         rate,
         comment,
-        date,
     });
 
     newSellerRate
@@ -51,14 +50,13 @@ exports.getSellerRateById = (req, res) => {
 //update seller rate
 exports.updateSellerRate = async (req, res) => {
     let sellerRateId = req.params.id;
-    const { customerName, sellerName, rate, comment, date } = req.body;
+    const { customerName, sellerName, rate, comment } = req.body;
 
     const updateSellerRate = {
         customerName,
         sellerName,
         rate,
         comment,
-        date,
     };
 
     const update = await SellerRate.findByIdAndUpdate(sellerRateId, updateSellerRate)

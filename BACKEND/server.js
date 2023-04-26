@@ -9,6 +9,12 @@ const app = express();
 require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(bodyParser.json());
@@ -18,6 +24,8 @@ const admin_router = require("./Routes/admin-route");
 app.use("/admin", admin_router);
 
 const PORT = process.env.PORT || 8070;
+
+app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
@@ -45,6 +53,7 @@ app.use("/productRate", productRate_router);
 //seller rate route
 const sellerRate_router = require("./Routes/sellerRate-route");
 app.use("/sellerRate", sellerRate_router);
+//import the backend routes
 
 const customerRouter = require("./Routes/customer-route");
 app.use("/customer", customerRouter);

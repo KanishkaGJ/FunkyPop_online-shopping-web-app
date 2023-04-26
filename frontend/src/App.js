@@ -27,6 +27,22 @@ import CartItem from "./components/CartItem";
 import PayDeliver from "./components/PayDeliver";
 import ConfirmPurchase from "./components/ConfirmPurchase";
 
+//admin
+import AdminSignup from "./components/AdminSignup";
+import AdminSignin from "./components/AdminSignin";
+import AdminPage from "./components/AdminPage";
+
+//product rate
+import AddProductRate from "./components/AddProductRate";
+import ProductRate from "./components/ProductRates";
+
+//filtered rates
+import Product2FilteredRateProduct2FilteredRate from "./components/Product2FilteredRate";
+import SellerFilteredRate from "./components/SellerFilteredRate";
+
+//seller rate
+import AddSellerRate from "./components/AddSellerRate";
+
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
 
@@ -36,7 +52,27 @@ function App() {
       <BackDrop show={sideToggle} click={() => setSideToggle(false)} />
       <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
       <Routes>
-        {/*<Route exact path="/" compoment={HomePage}></Route>*/}
+        <Route path="/login" element={<CustomerLogin />}></Route>
+        <Route path="/signup" element={<CustomerSignup />}></Route>
+        <Route path="/users" element={<Testpage />}></Route>
+
+        <Route path="/slogin" element={<SellerLogin />}></Route>
+        <Route path="/ssignup" element={<SellerSignup />}></Route>
+
+        <Route path="/adminSignup" element={<AdminSignup />}></Route>
+        <Route path="/adminLogin" element={<AdminSignin />}></Route>
+        <Route path="/adminPage" element={<AdminPage />}></Route>
+
+        <Route path="/addproductRate" element={<AddProductRate />}></Route>
+        <Route path="/ProductRates" element={<ProductRate />}></Route>
+
+        <Route path="/addSellerRate" element={<AddSellerRate />}></Route>
+
+        <Route
+          path="/product2rates"
+          element={<Product2FilteredRateProduct2FilteredRate />}
+        ></Route>
+        <Route path="/sellerRate" element={<SellerFilteredRate />}></Route>
         <Route
           exact
           path="/cart"
@@ -46,17 +82,9 @@ function App() {
             </>
           }
         ></Route>
-        <Route path="/login" element={<CustomerLogin />}></Route>
-        <Route path="/signup" element={<CustomerSignup />}></Route>
-        <Route path="/users" element={<Testpage />}></Route>
+
         <Route path="/cusprofile" element={<CustomerProfile />}></Route>
         <Route path="/selprofile" element={<SellerProfile />}></Route>
-
-        <Route path="/slogin" element={<SellerLogin />}></Route>
-        <Route path="/ssignup" element={<SellerSignup />}></Route>
-
-        <Route path="/slogin" element={<SellerLogin/>}></Route>
-        <Route path="/ssignup" element={<SellerSignup/>}></Route>
 
         <Route path="/addP" element={<AddProduct/>}></Route>
         <Route path="/viewP" element={<ViewProduct/>}></Route>
@@ -65,15 +93,11 @@ function App() {
         <Route path="/singleP" element={<SingleProduct/>}></Route>
 
         <Route path="/email" element={<EmailSend />}></Route>
-        <Route path="/slogin" element={<SellerLogin />}></Route>
-        <Route path="/ssignup" element={<SellerSignup />}></Route>
+
         <Route path="/addP" element={<AddProduct />}></Route>
 
         <Route path="/pay" element={<PayDeliver />}></Route>
-        {/* <Route
-          path="/confirmpay/:customerName/:customerPhone/:deliveryAddress/:tot"
-          element={<ConfirmPurchase />}
-        /> */}
+
         <Route path="/confirmpay" element={<ConfirmPurchase />}></Route>
       </Routes>
     </Router>

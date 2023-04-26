@@ -62,8 +62,6 @@ export default function ClientProduct() {
 
 
 
-
-
 // import React, { useEffect, useCallback, useMemo } from "react";
 // import axios from "axios";
 // import { useDispatch, useSelector } from "react-redux";

@@ -16,7 +16,7 @@ export default function UpdateExpense(){
     const [productDescription, setProDescrip] = useState('');
     
     const sendDataToUpdate =()=>{
-        axios.put('http://localhost:8080/product/updateProduct/'+ID,
+        axios.put('http://localhost:8070/product/updateProduct/'+ID,
         {
             productID, 
             productName, 
@@ -117,13 +117,13 @@ export default function UpdateExpense(){
                         <span className="focus-input100"></span>
                     </div>
                     
-                        <button type="submit" className="login100-form-btn">
-                            Update
-                        </button>
+                        
                         <div className="flex-col-c p-t-35 p-b-40">
                         <span className="txt1 p-b-9">
                         <Link to="/viewP" className="txt3">
-                            I don't want to be in ths page
+                        <button type="submit" className="login100-form-btn">
+                            Update
+                        </button>
                         </Link>
                         </span>
                     </div>

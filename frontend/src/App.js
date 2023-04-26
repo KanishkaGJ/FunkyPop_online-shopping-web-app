@@ -10,10 +10,13 @@ import SellerSignup from "./components/SellerSignup";
 import CustomerProfile from "./components/CustomerProfile";
 import SellerProfile from "./components/SellerProfile";
 import EmailSend from "./components/EmailSend";
+
 import AddProduct from "./components/AddProduct";
 import ViewProduct from "./components/ViewProduct";
 import UpdateProduct from "./components/UpdateProduct";
 import ClientProduct from "./components/ClientProduct";
+import SingleProduct from "./components/SingleProduct";
+
 import HomePage from "./components/HomePage";
 import CartPage from "./components/CartPage";
 
@@ -51,7 +54,9 @@ function App() {
         <Route path="/addP" element={<AddProduct/>}></Route>
         <Route path="/viewP" element={<ViewProduct/>}></Route>
         <Route path="/updateP" element={<UpdateProduct/>}></Route>
-        <Route path="/clientP" element={<clientProduct/>}></Route>
+        <Route path="/clientP" element={<ClientProduct/>}></Route>
+        <Route path="/singleP" element={<SingleProduct/>}></Route>
+
         <Route path="/email" element={<EmailSend />}></Route>
         <Route path="/slogin" element={<SellerLogin />}></Route>
         <Route path="/ssignup" element={<SellerSignup />}></Route>

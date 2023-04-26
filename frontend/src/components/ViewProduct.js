@@ -11,7 +11,7 @@ export default function productView() {
 
 
 	useEffect(() => {
-		Axios.get('http://localhost:8080/product/products')
+		Axios.get('http://localhost:8070/product/products')
 			.then((getPro) => {
 				setProduct(getPro.data);
 			})
@@ -31,7 +31,7 @@ export default function productView() {
 	}
 
 	const onDelete = (_id) => {
-		Axios.delete("http://localhost:8080/product/deleteProduct/" + _id)
+		Axios.delete("http://localhost:8070/product/deleteProduct/" + _id)
 			.then(() => {
 				alert("Product Deleted");
 				window.location.reload();
@@ -134,4 +134,4 @@ export default function productView() {
 
 	)
 
-}
+};

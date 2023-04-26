@@ -1,10 +1,31 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import CustomerLogin from "./components/CustomerLogin";
 import CustomerSignup from "./components/CustomerSignup";
 import Testpage from "./components/Testpage";
 import SellerLogin from "./components/SellerLogin";
 import SellerSignup from "./components/SellerSignup";
+import CustomerProfile from "./components/CustomerProfile";
+import SellerProfile from "./components/SellerProfile";
+import EmailSend from "./components/EmailSend";
+
+import AddProduct from "./components/AddProduct";
+import ViewProduct from "./components/ViewProduct";
+import UpdateProduct from "./components/UpdateProduct";
+import ClientProduct from "./components/ClientProduct";
+import SingleProduct from "./components/SingleProduct";
+
+import HomePage from "./components/HomePage";
+import CartPage from "./components/CartPage";
+
+import NavBar from "./components/NavBar";
+import BackDrop from "./components/BackDrop";
+import SideDrawer from "./components/SideDrawer";
+import CartItem from "./components/CartItem";
+import PayDeliver from "./components/PayDeliver";
+import ConfirmPurchase from "./components/ConfirmPurchase";
 
 //admin
 import AdminSignup from "./components/AdminSignup";
@@ -23,8 +44,13 @@ import SellerFilteredRate from "./components/SellerFilteredRate";
 import AddSellerRate from "./components/AddSellerRate";
 
 function App() {
+  const [sideToggle, setSideToggle] = useState(false);
+
   return (
     <Router>
+      <NavBar click={() => setSideToggle(true)} />
+      <BackDrop show={sideToggle} click={() => setSideToggle(false)} />
+      <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
       <Routes>
         <Route path="/login" element={<CustomerLogin />}></Route>
         <Route path="/signup" element={<CustomerSignup />}></Route>
@@ -47,6 +73,32 @@ function App() {
           element={<Product2FilteredRateProduct2FilteredRate />}
         ></Route>
         <Route path="/sellerRate" element={<SellerFilteredRate />}></Route>
+        <Route
+          exact
+          path="/cart"
+          element={
+            <>
+              <CartPage />
+            </>
+          }
+        ></Route>
+
+        <Route path="/cusprofile" element={<CustomerProfile />}></Route>
+        <Route path="/selprofile" element={<SellerProfile />}></Route>
+
+        <Route path="/addP" element={<AddProduct/>}></Route>
+        <Route path="/viewP" element={<ViewProduct/>}></Route>
+        <Route path="/updateP" element={<UpdateProduct/>}></Route>
+        <Route path="/clientP" element={<ClientProduct/>}></Route>
+        <Route path="/singleP" element={<SingleProduct/>}></Route>
+
+        <Route path="/email" element={<EmailSend />}></Route>
+
+        <Route path="/addP" element={<AddProduct />}></Route>
+
+        <Route path="/pay" element={<PayDeliver />}></Route>
+
+        <Route path="/confirmpay" element={<ConfirmPurchase />}></Route>
       </Routes>
     </Router>
   );

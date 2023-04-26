@@ -1,48 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 axios.defaults.withCredentials = true;
 let firstRender = true;
 
-export default function Testpage() {
-    
-    const [user, setUser] =  useState();
+const Testpage = () => {
+  const [customer, setCustomer] = useState();
 
-    const refreshToken = async()=>{
-        const res = await axios.get("http://localhost:8070/customer/refresh",{
-            withCredentials: true,
-        }).catch((err)=>console.log(err));
+  const sendRequest = async () => {
+    const res = await axios
+      .get("http://localhost:8070/customer/cus", {
+        withCredentials: true,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
 
-        const data = await res.data;
-        return data;
+  useEffect(() => {
+    if (firstRender) {
+      firstRender = false;
+      sendRequest().then((data) => setCustomer(data.customer));
     }
+    // let interval = setInterval(() => {
+    //   refreshToken().then((data) => setCustomer(data.customer));
+    // }, 1000 * 29);
+    // return () => clearInterval(interval);
+  }, []);
 
-
-    const sendRequest = async ()=>{
-        const res = await axios.get("http://localhost:8070/customer/cus", {
-            withCredentials: true
-        }).catch((err)=>console.log(err));
-        const data = await res.data;
-        return data;
-    };
-
-    useEffect(()=>{
-        if(firstRender){
-            firstRender = false;
-            sendRequest().then((data)=>setUser(data.user));
-        }
-        let interval = setInterval(()=>{
-            refreshToken().then(data=>setUser(data.user))
-        },1000*28);
-
-        return ()=>clearInterval(interval)
-        
-    },[]);
-
-    return (
-
+  return (
     <div>
-        Test Page<br/>
-        {user && <h1>{user.CustomerName}</h1>}
+      Hello
+      <br />
+      {customer && <h1>{customer.CustomerName}</h1>}
     </div>
-    )
-}
+  );
+};
+
+export default Testpage;

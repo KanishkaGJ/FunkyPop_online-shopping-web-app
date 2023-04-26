@@ -52,9 +52,13 @@ function App() {
       <BackDrop show={sideToggle} click={() => setSideToggle(false)} />
       <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
       <Routes>
-        <Route path="/login" element={<CustomerLogin />}></Route>
-        <Route path="/signup" element={<CustomerSignup />}></Route>
-        <Route path="/users" element={<Testpage />}></Route>
+        <Route exact path="/" element={<><HomePage/></>}></Route>
+        <Route exact path="/cart" element={<><CartPage/></>}></Route>
+        <Route path="/login" element={<CustomerLogin/>}></Route>
+        <Route path="/signup" element={<CustomerSignup/>}></Route>
+        <Route path="/users" element={<Testpage/>}></Route>
+        <Route path="/cusprofile" element={<CustomerProfile />}></Route>
+        <Route path="/selprofile" element={<SellerProfile />}></Route>
 
         <Route path="/slogin" element={<SellerLogin />}></Route>
         <Route path="/ssignup" element={<SellerSignup />}></Route>

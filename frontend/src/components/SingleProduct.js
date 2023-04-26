@@ -63,7 +63,13 @@ return (
                                 <div class="sizes mt-5">
                                 
                                 </div>
-                                <div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                                <div class="cart mt-4 align-items-center"> 
+                                    <Link to="/cart">
+                                        <button class="btn btn-danger text-uppercase mr-2 px-4">
+                                            Add to cart
+                                        </button> 
+                                    </Link>
+                                    <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
                             </div>
                         </div>
                     </div>

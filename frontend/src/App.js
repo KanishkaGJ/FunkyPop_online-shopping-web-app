@@ -86,11 +86,11 @@ function App() {
         <Route path="/cusprofile" element={<CustomerProfile />}></Route>
         <Route path="/selprofile" element={<SellerProfile />}></Route>
 
-        <Route path="/addP" element={<AddProduct/>}></Route>
-        <Route path="/viewP" element={<ViewProduct/>}></Route>
-        <Route path="/updateP" element={<UpdateProduct/>}></Route>
-        <Route path="/clientP" element={<ClientProduct/>}></Route>
-        <Route path="/singleP" element={<SingleProduct/>}></Route>
+        <Route path="/addP" element={<AddProduct />}></Route>
+        <Route path="/viewP" element={<ViewProduct />}></Route>
+        <Route path="/updateP" element={<UpdateProduct />}></Route>
+        <Route path="/clientP" element={<ClientProduct />}></Route>
+        <Route path="/singleP" element={<SingleProduct />}></Route>
 
         <Route path="/email" element={<EmailSend />}></Route>
 

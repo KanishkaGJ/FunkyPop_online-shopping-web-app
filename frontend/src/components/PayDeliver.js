@@ -1,31 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import "../css/paymentDelivery.css";
 import "../css/cusLoginUtil.css";
-axios.defaults.withCredentials = true;
 
 export default function PayDeliver() {
-  const navigate = useNavigate();
-
-  const [customerName, setcustomerName] = useState("");
-  const [customerPhone, setcustomerPhone] = useState("");
-  const [deliveryAddress, setdeliveryAddress] = useState("");
-  const [tot, settot] = useState("");
-
-  const handleCheckout = (event) => {
-    event.preventDefault();
-    const formData = {
-      customerName,
-      customerPhone,
-      deliveryAddress,
-      tot,
-    };
-
-    navigate(`/confirmpay?formData=${JSON.stringify(formData)}`);
-    
-    
-  };
+  const [customerName, setcustomerName] = React.useState("");
+  const [customerPhone, setcustomerPhone] = React.useState("");
+  const [deliveryAddress, setdeliveryAddress] = React.useState("");
+  const [tot, settot] = React.useState("");
 
   return (
     <div className="paydeliver">
@@ -100,14 +82,20 @@ export default function PayDeliver() {
                   </div>
                 </div>
               </div>
-
-              <button
-                type="button"
-                className="paydeliverybtn"
-                onClick={handleCheckout}
+              <Link
+                to="/confirmpay"
+                state={{
+                  customerName: customerName,
+                  customerPhone: customerPhone,
+                  deliveryAddress: deliveryAddress,
+                  tot: tot,
+                }}
               >
-                Continue to Checkout
-              </button>
+                <input style={{ marginLeft: "10px" }} type="submit" />
+                {/* <button type="button" className="paydeliverybtn">
+                  Continue to Checkout
+                </button> */}
+              </Link>
             </form>
           </div>
         </div>

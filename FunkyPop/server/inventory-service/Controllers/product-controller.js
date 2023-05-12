@@ -1,22 +1,28 @@
-let product = require("../Models/product");
+let product = require("../Models/Product");
+
 //const ProductRate = require("../Models/ProductRate");
 // const { route } = require("../Routes/product-route");
 
-//add products
-exports.addProduct = (req, res) => {
 
-    const { productID, productName, quantity, type, color, size, productDescription } = req.body;
-    const newProduct = new product({ productID, productName, quantity, type, color, size, productDescription });
 
-    newProduct
-        .save()
-        .then(() => {
-            res.json("Product Added");
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-};
+// exports.addProduct = (req, res) => {
+
+//     const { productID, productName, quantity, type, color, size, productDescription } = req.body;
+//     const { filename: imageName } = req.file;
+//     const imagePath = `/Images/${imageName}`;
+//     const newProduct = new product({ productID, productName, quantity, type, color, size, productDescription, image: imagePath });
+
+    
+
+//     newProduct
+//         .save()
+//         .then(() => {
+//             res.json("Product Added");
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// };
 
 
 //all products
@@ -86,3 +92,4 @@ exports.deleteProduct = async (req, res) => {
         res.status(500).send({status: "Error with deleting product", error: err.message});
     });
 };
+

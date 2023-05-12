@@ -40,6 +40,11 @@ const productSchema = new Schema({
     productDescription:{ // description of the product
         type: String,
         required: true
+    },
+
+    image: {
+        type: String,
+        required: true
     }
 
 

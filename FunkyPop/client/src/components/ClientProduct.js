@@ -16,7 +16,7 @@ export default function ClientProduct() {
       });
   }, []);
 
-  const setID = (_id, productID, productName, quantity, type, color, size, productDescription) => {
+  const setID = (_id, productID, productName, quantity, type, color, size, productDescription, image) => {
 
 		localStorage.setItem('productID', productID);
 		localStorage.setItem('productName', productName);
@@ -26,35 +26,32 @@ export default function ClientProduct() {
     localStorage.setItem('size', size);
     localStorage.setItem('productDescription', productDescription);
 		localStorage.setItem('ID', _id);
+    localStorage.setItem('image', image);
 	};
 
  return (
   <>
-    {product.map((data) => {
-        return (
-          <div className="ui">
-            <div className="cards" key={data._id}>
-            <Link to="/singleP" onClick={() => setID(data._id, data.productID, data.productName, data.quantity, data.type, data.color, data.size, data.productDescription)}>
-              <div className="ui link cards">
-                  <div className="card">
-                  <div className="image">
-                    <img src='../images/cropTop' alt={data.productName} />
-                  </div>
-                  <div className="price">
-                    <div className="price">{data.productName}</div>
-                    <div className="price"> {data.size}</div>
-                    <div className="price">{data.color}</div>
-                  </div>
-                </div>
-              </div>
+    <div className="image-grid">
+      {product.map((products) => (
+        <div key={products._id} className="image-card">
+          <div
+            onClick={() =>
+              setID(
+                products._id,
+                products.productName,
+                products.size,
+                products.image
+              )
+            }
+          >
+            <Link to={`/animalArticle`} style={{ textDecoration: "none" }}>
+              <img src={product.image} alt={product.productName} />
+              <h2>{product.productName}</h2>
             </Link>
           </div>
-          </div>
-          
-        )
-      })
-  
-    }
+        </div>
+      ))}
+    </div>
   </>
  )
   

@@ -20,6 +20,7 @@ import CustomerSignup from "./components/CustomerSignup";
 import CustomerProfile from "./components/CustomerProfile";
 import SellerProfile from "./components/SellerProfile";
 
+import AddProduct from "./components/AddProduct";
 import ViewProduct from "./components/ViewProduct";
 import ClientProduct from "./components/ClientProduct";
 import SingleProduct from "./components/SingleProduct";
@@ -57,6 +58,7 @@ function App() {
         <Route path="/adminLogin" element={<AdminSignin />}></Route>
         <Route path="/adminPage" element={<AdminPage />}></Route>
 
+        <Route path="/addP" element={<AddProduct />}></Route>
         <Route path="/viewP" element={<ViewProduct />}></Route>
         <Route path="/clientP" element={<ClientProduct />}></Route>
         <Route path="/singleP" element={<SingleProduct />}></Route>

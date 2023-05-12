@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import "../css/clientP.css"
 
 
 
@@ -28,35 +29,36 @@ export default function ClientProduct() {
 		localStorage.setItem('ID', _id);
 	};
 
- return (
-  <>
-    {product.map((data) => {
+ 
         return (
-          <div className="ui">
-            <div className="cards" key={data._id}>
-            <Link to="/singleP" onClick={() => setID(data._id, data.productID, data.productName, data.quantity, data.type, data.color, data.size, data.productDescription)}>
-              <div className="ui link cards">
-                  <div className="card">
-                  <div className="image">
-                    <img src='../images/cropTop' alt={data.productName} />
-                  </div>
-                  <div className="price">
-                    <div className="price">{data.productName}</div>
-                    <div className="price"> {data.size}</div>
-                    <div className="price">{data.color}</div>
-                  </div>
-                </div>
-              </div>
+          <div className="image-grid">
+      {product.map((product) => (
+        <div key={product._id} className="image-card">
+          <div
+            onClick={() =>
+              setID(
+                product._id,
+                product.productName,
+                product.quantity,
+                product.type,
+                product.color,
+                product.size,
+                product.productDescription,
+              )
+            }
+          >
+            <Link to={`/singleP`} style={{ textDecoration: "none" }}>
+              <img src={product.image} alt={product.productName} />
+              <h2>{product.productName}</h2>
             </Link>
           </div>
-          </div>
+        </div>
+      ))}
+    </div>
           
         )
-      })
-  
-    }
-  </>
- )
+   
+ 
   
 }
 

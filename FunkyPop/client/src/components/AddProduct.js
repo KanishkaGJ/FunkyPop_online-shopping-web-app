@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from "axios";
 import '../css/customerLogin.css';
 
 export default function AddProduct() {
 
-
+  const navigate = useNavigate();
   const [productID, setPID] = useState("");
   const [productName, setPName] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -30,6 +30,7 @@ export default function AddProduct() {
     //send http request
     axios.post("http://localhost:8060/product/addProduct",newProduct).then(()=>{
         alert("New Product added");
+        navigate("/viewP");
         // history("/login");
     }).catch((err)=>{
         alert(err)

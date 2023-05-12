@@ -20,7 +20,9 @@ import CustomerSignup from "./components/CustomerSignup";
 import CustomerProfile from "./components/CustomerProfile";
 import SellerProfile from "./components/SellerProfile";
 
+import AddProduct from "./components/AddProduct";
 import ViewProduct from "./components/ViewProduct";
+import veiwPNav from "./components/viewPNav";
 import ClientProduct from "./components/ClientProduct";
 import SingleProduct from "./components/SingleProduct";
 import UpdateProduct from "./components/UpdateProduct";
@@ -57,7 +59,9 @@ function App() {
         <Route path="/adminLogin" element={<AdminSignin />}></Route>
         <Route path="/adminPage" element={<AdminPage />}></Route>
 
-        <Route path="/viewP" element={<ViewProduct />}></Route>
+        <Route path="/vpNav" element={<veiwPNav />}></Route>
+        <Route path="/addP" element={<AddProduct />}></Route>
+        <Route path="/viewP" element={<><viewPNav/> <ViewProduct /></>}></Route>
         <Route path="/clientP" element={<ClientProduct />}></Route>
         <Route path="/singleP" element={<SingleProduct />}></Route>
         <Route path="/updateP" element={<UpdateProduct />}></Route>

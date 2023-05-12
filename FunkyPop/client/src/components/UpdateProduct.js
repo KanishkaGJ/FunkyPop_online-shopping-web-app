@@ -1,7 +1,7 @@
 import React , {useState,useEffect} from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 
 export default function UpdateExpense(){
@@ -15,27 +15,24 @@ export default function UpdateExpense(){
     const [size, setProSize] = useState('');
     const [productDescription, setProDescrip] = useState('');
     
-    const sendDataToUpdate =()=>{
-        axios.put('http://localhost:8060/product/updateProduct/'+ID,
-        {
-            productID, 
-            productName, 
-            quantity, 
-            type, 
-            color, 
-            size, 
-            productDescription
-        }
-        ).then(() => navigate("/viewP")
-        ).then(() => {
-            alert("Product Updated")
-        }).catch((err) => {
-            
-            alert(err)
-     })
-
-   
-    }
+    const sendDataToUpdate = () => {
+        axios
+          .put(`http://localhost:8060/product/updateProduct/${ID}`, {
+            productID,
+            productName,
+            quantity,
+            type,
+            color,
+            size,
+            productDescription,
+          }).then(() => {
+              alert("Product Updated");
+              navigate("/viewP");  
+          }).catch((error) => {
+            alert(error.message);
+          });
+      };
+      
 
 
     useEffect(()=>{
@@ -120,11 +117,11 @@ export default function UpdateExpense(){
                         
                         <div className="flex-col-c p-t-35 p-b-40">
                         <span className="txt1 p-b-9">
-                        <Link to="/viewP" className="txt3">
+              
                         <button type="submit" className="login100-form-btn">
                             Update
                         </button>
-                        </Link>
+                  
                         </span>
                     </div>
     

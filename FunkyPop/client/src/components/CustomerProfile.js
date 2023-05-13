@@ -170,6 +170,8 @@ export default function CustomerProfile() {
               Delete Account
             </button>
           </form>
+
+          <button className="login100-form-btn m-b-16 m-t-30">HOME</button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 
 
-export default function ViewPNav() {
+export default function AddPNav() {
     return (
         <>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,11 +11,11 @@ export default function ViewPNav() {
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="/">View Product </a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/addP">Add Product</a>
+                    <a class="nav-link" href="/viewP">View Product</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="/">Add Product </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/clientP">Home</a>

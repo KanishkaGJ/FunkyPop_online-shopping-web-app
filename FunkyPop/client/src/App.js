@@ -21,11 +21,14 @@ import CustomerProfile from "./components/CustomerProfile";
 import SellerProfile from "./components/SellerProfile";
 
 import AddProduct from "./components/AddProduct";
+import AddPNav from "./components/AddPNav";
 import ViewProduct from "./components/ViewProduct";
-import veiwPNav from "./components/viewPNav";
+import ViewPNav from "./components/viewPNav";
 import ClientProduct from "./components/ClientProduct";
+import ClientPNav from "./components/ClientPNav";
 import SingleProduct from "./components/SingleProduct";
 import UpdateProduct from "./components/UpdateProduct";
+import UpdatePNav from "./components/UpdatePNav";
 import SellerLogin from "./components/SellerLogin";
 import SellerSignup from "./components/SellerSignup";
 
@@ -38,6 +41,7 @@ import NavBar from './components/NavBar';
 import PayDeliver from './components/PayDeliver';
 import SideDrawer from './components/SideDrawer';
 
+import AfterLoginNav from "./components/AfterLoginNav";
 
 function App() {
   return (
@@ -46,10 +50,7 @@ function App() {
         <Route path="/addproductRate" element={<AddProductRate />}></Route>
         <Route path="/ProductRates" element={<ProductRate />}></Route>
 
-        <Route
-          path="/product2rates"
-          element={<Product2FilteredRateProduct2FilteredRate />}
-        ></Route>
+        <Route path="/product2rates" element={<Product2FilteredRateProduct2FilteredRate />}></Route>
 
         <Route path="/addSellerRate" element={<AddSellerRate />}></Route>
 
@@ -59,13 +60,15 @@ function App() {
         <Route path="/adminLogin" element={<AdminSignin />}></Route>
         <Route path="/adminPage" element={<AdminPage />}></Route>
 
-        <Route path="/vpNav" element={<veiwPNav />}></Route>
-        <Route path="/addP" element={<AddProduct />}></Route>
-        <Route path="/viewP" element={<><viewPNav/> <ViewProduct /></>}></Route>
-        <Route path="/clientP" element={<ClientProduct />}></Route>
+        <Route path="/vpNav" element={<><ViewPNav /></>}></Route>
+        <Route path="/addP" element={<><AddPNav/><AddProduct /></>}></Route>
+        <Route path="/viewP" element={<><ViewPNav/> <ViewProduct /></>}></Route>
+        <Route path="/clientP" element={<><ClientPNav/><ClientProduct/></>}></Route>
         <Route path="/singleP" element={<SingleProduct />}></Route>
-        <Route path="/updateP" element={<UpdateProduct />}></Route>
+        <Route path="/updateP" element={<><UpdatePNav/><UpdateProduct /></>}></Route>
 
+
+        <Route path='/loginhome' element={<><AfterLoginNav/><ClientProduct/></>}></Route>
         <Route path="/login" element={<CustomerLogin />}></Route>
         <Route path="/signup" element={<CustomerSignup />}></Route>
         <Route path="/cusprofile" element={<CustomerProfile />}></Route>

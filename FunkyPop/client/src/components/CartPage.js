@@ -1,45 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/cartPage.css";
-import "../components/CartItem";
-// import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from "react-router";
+import Axios from "axios";
 import { Link } from "react-router-dom";
 
-import CartItem from "../components/CartItem";
 
 const CartPage = () => {
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {id} = useParams();
 
-  //const cart = useSelector(state => state.cart);
-  //const CartItems = cart;
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    Axios.get('localhost:9010/cart/allCarts').then((getCart) => {
+      setCart(getCart.data);
+    })
+  })
+
+  const setC = (_id, cartID, pName, pQuantity) => {
+    localStorage.setItem('cartID', cartID);
+    localStorage.setItem('pName', pName);
+    localStorage.setItem('pQuantity', pQuantity);
+  }
 
   return (
-    <div className="cartPage">
-      <div className="cartPage__left">
-        <h2>Shopping Cart</h2>
-        <CartItem />
-        {/* {CartItem.length === 0 ? (
-          <div>
-            Your cart is empty <Link to='/'>Go Back</Link>
-          </div>
-        ) : (
-          CartItems.map((item) => <CartItem />)
-        )} */}
-      </div>
-
-      <div className="cartPage__right">
-        <div className="cartPage__info">
-          <p>Sub Total (1 ) items</p>
-          <p>2000.00</p>
-        </div>
+    <div className="cartPage__right">
+        <h1>Cart Items.</h1>
+        <br />
 
         <div>
+          <table className="table text-black">
+						<thead className="thead-primary">
+								<tr>
+									<th>Cart ID</th>
+									<th>Product Name</th>
+									<th>Quantity</th>
+								</tr>
+						</thead>
+						{cart.map((data) => {
+						<tbody>
+              <tr>
+							  <td>001</td>
+								<td>T-Shirt</td>
+								<td>3</td>
+							</tr>
+							<tr>
+							  <td>{data.cartID}</td>
+								<td>{data.productName}</td>
+								<td>{data.quantity}</td>
+							</tr>
+						</tbody>
+						})}
+					</table>
           <Link to="/pay">
-            <button>Check Out</button>
+            <button className="btn btn-sm btn-primary viewBtn">Proceed to checkout</button>
           </Link>
-        </div>
-      </div>
+        </div>         
     </div>
-  );
-};
+  )
+}
 
-export default CartPage;
+export default CartPage
+

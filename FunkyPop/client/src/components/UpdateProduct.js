@@ -1,7 +1,6 @@
 import React , {useState,useEffect} from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function UpdateExpense(){
@@ -26,8 +25,7 @@ export default function UpdateExpense(){
             size,
             productDescription,
           }).then(() => {
-              alert("Product Updated");
-              navigate("/viewP");  
+              alert("Product Updated");  
           }).catch((error) => {
             alert(error.message);
           });
@@ -117,10 +115,11 @@ export default function UpdateExpense(){
                         
                         <div className="flex-col-c p-t-35 p-b-40">
                         <span className="txt1 p-b-9">
-              
-                        <button type="submit" className="login100-form-btn">
-                            Update
-                        </button>
+                        <Link to="/viewP">
+                            <button type="submit" className="login100-form-btn">
+                                Update
+                            </button>
+                        </Link>
                   
                         </span>
                     </div>

@@ -7,7 +7,7 @@ export default function PayDeliver() {
   const [customerName, setcustomerName] = React.useState("");
   const [customerPhone, setcustomerPhone] = React.useState("");
   const [deliveryAddress, setdeliveryAddress] = React.useState("");
-  const [email, setEmail]= React.useState("");
+  const [email, setEmail] = React.useState("");
 
   return (
     <div className="paydeliver">
@@ -92,14 +92,14 @@ export default function PayDeliver() {
                 }}
               >
                 <input style={{ marginLeft: "10px" }} type="submit" />
-                {/* <button type="button" className="paydeliverybtn">
+                <button type="button" className="paydeliverybtn">
                   Continue to Checkout
-                </button> */}
+                </button>
               </Link>
             </form>
           </div>
         </div>
       </div>
-      </div>
-      );
+    </div>
+  );
 }

@@ -73,6 +73,12 @@ function App() {
 
         <Route path="/slogin" element={<SellerLogin />}></Route>
         <Route path="/ssignup" element={<SellerSignup />}></Route>
+
+        <Route path="/cartPage" element={<CartPage />}></Route>
+        <Route path="/pay" element={<PayDeliver />}></Route>
+        <Route path="/confirmpay" element={<ConfirmPurchase />}></Route>
+
+
       </Routes>
     </Router>
   );

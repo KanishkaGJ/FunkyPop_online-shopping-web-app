@@ -22,7 +22,7 @@ export default function CustomerLogin() {
       .post("http://localhost:8050/seller/login", newLogin)
       .then(() => {
         alert("Login Successful");
-        history("/viewP");
+        history("/sellerRate");
       })
       .catch((err) => {
         alert(err);

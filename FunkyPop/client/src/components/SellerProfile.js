@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Link } from "react";
 import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -141,6 +141,9 @@ export default function SellerProfile() {
               Delete Account
             </button>
           </form>
+          <Link to="/sellerRate">
+          <button className="login100-form-btn m-b-16 m-t-30">Customer Profile</button>
+          </Link>
         </div>
       </div>
     </div>

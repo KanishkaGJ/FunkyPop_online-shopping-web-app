@@ -18,6 +18,9 @@ export default function UpdatePNav() {
             <Link to='/signup'>
                 <button class="btn btn-outline-dark m-l-1300" type="submit">signup</button>
             </Link>
+            <Link to='/slogin'>
+                <button class="btn btn-outline-dark m-l-500" type="submit">Seller Login</button>
+            </Link>
             
           </form>
         </div>
